@@ -13,7 +13,7 @@ services:
     volumes:
       - chroma-data:/chroma/chroma/
     ports:
-      - 8000:8000
+      - "8000:8000"
     networks:
       - net
 
