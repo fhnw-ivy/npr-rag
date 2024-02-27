@@ -1,8 +1,7 @@
-from transformers import AutoModel, AutoTokenizer
 import chromadb
 from chromadb.utils import embedding_functions
-default_ef = embedding_functions.DefaultEmbeddingFunction()
 
+default_ef = embedding_functions.DefaultEmbeddingFunction()
 
 if __name__ == "__main__":
     text = "This is a test sentence."
@@ -22,4 +21,3 @@ if __name__ == "__main__":
         ids=["test1"],
         embeddings=embedding,
     )
-
