@@ -4,6 +4,7 @@ from langchain_openai import ChatOpenAI
 
 default_ef = embedding_functions.DefaultEmbeddingFunction()
 
+
 def get_openai_client():
     llm = ChatOpenAI()
     return llm
@@ -18,7 +19,7 @@ if __name__ == "__main__":
     print(embeddings)
 
     # Add to collection
-    chroma_client = chromadb.HttpClient(host='localhost', port=8000)
+    chroma_client = chromadb.HttpClient(host="localhost", port=8000)
     collection = chroma_client.get_or_create_collection(collection_name)
 
     collection.add(
