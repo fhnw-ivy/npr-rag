@@ -1,7 +1,12 @@
 import chromadb
 from chromadb.utils import embedding_functions
+from langchain_openai import ChatOpenAI
 
 default_ef = embedding_functions.DefaultEmbeddingFunction()
+
+def get_openai_client():
+    llm = ChatOpenAI()
+    return llm
 
 
 if __name__ == "__main__":
@@ -19,7 +24,7 @@ if __name__ == "__main__":
     collection.add(
         documents=[text],
         metadatas=[{"source": "my_source"}],
-        ids=["test1"],
+        ids=["test2"],
         embeddings=embeddings,
     )
 
