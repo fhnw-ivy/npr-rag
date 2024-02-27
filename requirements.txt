@@ -1,3 +1,4 @@
 chromadb
 langchain
 langchain-openai
+sentence-transformers
