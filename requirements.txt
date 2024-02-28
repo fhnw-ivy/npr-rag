@@ -2,3 +2,6 @@ chromadb
 langchain
 langchain-openai
 sentence-transformers
+pandas
+lark
+nltk
