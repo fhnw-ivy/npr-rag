@@ -1,18 +1,18 @@
 import chromadb
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.documents.base import Document
+from langchain_core.embeddings import Embeddings
 from langchain_core.vectorstores import VectorStoreRetriever
 
 
 class VectorStore:
     def __init__(self,
-                 embedding_function,
-                 host,
-                 port,
-                 collection):
-        self.client = chromadb.Client(host=host, port=port)
-        self.vector_store = Chroma(self.client, collection=collection)
-        self.embedding_function = embedding_function
+                 embedding_function: Embeddings,
+                 host: str,
+                 port: int,
+                 collection: str):
+        self.client = chromadb.HttpClient(host=host, port=port)
+        self.vector_store = Chroma(client=self.client, collection_name=collection, embedding_function=embedding_function)
 
     def heartbeat(self) -> int:
         """Check the heartbeat of the vector store client."""
@@ -28,7 +28,7 @@ class VectorStore:
 
     def add_documents(self, docs: list[Document]):
         """Add a list of documents to the vector store."""
-        self.vector_store.add_documents(docs, embedding=self.embedding_function)
+        self.vector_store.add_documents(docs)
 
     def similarity_search(self, query: str) -> list[Document]:
         """Perform a similarity search in the vector store with a given query."""
