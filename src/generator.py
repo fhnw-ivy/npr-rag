@@ -1,13 +1,15 @@
 import openai
-from templates import base_template
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from vectorstore import VectorStore
+
+from src.templates import base_template
+from src.vectorstore import VectorStore
+
 
 class Generator:
-    def __init__(self, openai_api_key: str, template: str = base_template, vectorstore: VectorStore=None):
+    def __init__(self, openai_api_key: str, template: str = base_template, vectorstore: VectorStore = None):
         self.openai_api_key = openai_api_key
         self.template = template
         self.vectorstore = vectorstore
@@ -23,10 +25,10 @@ class Generator:
         model = ChatOpenAI()
 
         chain = (
-            {"context": self.retriever, "question": RunnablePassthrough()}
-            | prompt
-            | model
-            | StrOutputParser()
+                {"context": self.retriever, "question": RunnablePassthrough()}
+                | prompt
+                | model
+                | StrOutputParser()
         )
 
         answer = chain.invoke(question)

@@ -4,14 +4,20 @@ from langchain_core.documents.base import Document
 from langchain_core.embeddings import Embeddings
 from langchain_core.vectorstores import VectorStoreRetriever
 
+from src import config
+
 
 class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
-                 host: str,
-                 port: int,
-                 collection: str):
+                 collection: str,
+                 host: str = config.vector_store['host'],
+                 port: int = config.vector_store['port']):
         self.client = chromadb.HttpClient(host=host, port=port)
+
+        # TODO: Remove this later
+        self.client.reset()
+
         self.vector_store = Chroma(client=self.client, collection_name=collection, embedding_function=embedding_function)
 
     def heartbeat(self) -> int:
