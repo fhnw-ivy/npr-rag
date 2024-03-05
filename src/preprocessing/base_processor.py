@@ -1,32 +1,19 @@
-import langchain_community
-import pandas as pd
-from ast import literal_eval
-
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents.base import Document
 from langchain_core.embeddings import Embeddings
-from pandas import DataFrame
-from pydantic.v1 import BaseModel
 
 
 class BaseProcessor:
-
-    def __init__(self, embedding_model: (BaseModel, Embeddings), batch_size: int = 41666, *args, **kwargs):
-        self.batch_size = batch_size
+    def __init__(self, embedding_model: Embeddings):
         self.embedding_model = embedding_model
+        self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=32, length_function=len)
 
-    @staticmethod
-    def clean(dataframe: DataFrame):
-        dataframe['content'] = dataframe['content'].apply(literal_eval)
-        return dataframe.explode('content')
+    def clean(self, corpus: str) -> str:
+        return corpus
 
-    def preprocess_documents(self, documents):
-        # Placeholder for common preprocessing steps
-        return documents
+    def chunk(self, corpus: str, metadata) -> list[Document]:
+        docs = []
+        for chunk in self.text_splitter.split_text(corpus):
+            docs.append(Document(page_content=chunk, metadata=metadata))
 
-    def chunk_documents(self, documents):
-        # Placeholder for a generic chunking strategy
-        return documents
-
-    def clean_text(self, text):
-        # Placeholder for generic text cleaning
-
-        return text
+        return docs
