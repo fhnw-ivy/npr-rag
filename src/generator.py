@@ -4,16 +4,15 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
+from vectorstore import VectorStore
 
 class Generator:
-    def __init__(self, openai_api_key: str, template: str = base_template, vectorstore=None):
+    def __init__(self, openai_api_key: str, template: str = base_template, vectorstore: VectorStore=None):
         self.openai_api_key = openai_api_key
         self.template = template
         self.vectorstore = vectorstore
-        self.retriever = vectorstore.as_retriever()
+        self.retriever = vectorstore.get_retriever()
         openai.api_key = self.openai_api_key
-
-        print(vectorstore)
 
     def set_template(self, template: str):
         self.template = template

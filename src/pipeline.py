@@ -1,20 +1,22 @@
 from generator import Generator
 from dotenv import load_dotenv
-from langchain_community.vectorstores import FAISS
-from langchain_openai.embeddings import OpenAIEmbeddings
 import os
 
 load_dotenv()
 
-sample_documents = [
-    "The quick brown fox jumps over the lazy kangaroo.",
-    "The lazy Wombat jumps over the lazy fox."
-]
+import config
+from vectorstore import VectorStore
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
-vectorstore = FAISS.from_texts(
-    sample_documents, embedding=OpenAIEmbeddings()
+embeddings = HuggingFaceEmbeddings()
+
+vector_store = VectorStore(
+    embedding_function=embeddings,
+    host=config.vector_store['host'],
+    port=config.vector_store['port'],
+    collection=config.vector_store['collection']
 )
 
-gen = Generator(openai_api_key=os.getenv("OPENAI_API_KEY"), vectorstore=vectorstore)
+gen = Generator(openai_api_key=os.getenv("OPENAI_API_KEY"), vectorstore=vector_store)
 
-gen.ask("What is the color of the fox?")
+gen.ask("Who was in Paris?")
