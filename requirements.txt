@@ -1,8 +1,9 @@
 chromadb
 langchain
 langchain-openai
+langchain_experimental
 sentence-transformers
 pandas
 lark
 nltk
-faiss-cpu
+toml
