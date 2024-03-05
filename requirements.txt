@@ -7,3 +7,4 @@ pandas
 lark
 nltk
 toml
+ragas
