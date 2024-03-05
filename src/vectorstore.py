@@ -2,14 +2,16 @@ import chromadb
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.documents.base import Document
 from langchain_core.vectorstores import VectorStoreRetriever
-from src import config
 
 
 class VectorStore:
-    def __init__(self, embedding_function):
-        self.vector_store_config = config.vector_store
-        self.client = chromadb.Client(host=self.vector_store_config['host'], port=self.vector_store_config['port'])
-        self.vector_store = Chroma(self.client, collection=self.vector_store_config['collection'])
+    def __init__(self,
+                 embedding_function,
+                 host,
+                 port,
+                 collection):
+        self.client = chromadb.Client(host=self.host, port=port)
+        self.vector_store = Chroma(self.client, collection=collection)
         self.embedding_function = embedding_function
 
     def heartbeat(self) -> int:
