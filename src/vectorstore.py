@@ -2,7 +2,9 @@ import chromadb
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.documents.base import Document
 from langchain_core.embeddings import Embeddings
+from langchain_core.retrievers import BaseRetriever
 from langchain_core.vectorstores import VectorStoreRetriever
+from tqdm import tqdm
 
 from src import config
 
@@ -16,7 +18,7 @@ class VectorStore:
         self.client = chromadb.HttpClient(host=host, port=port)
 
         # TODO: Remove this later
-        self.client.reset()
+        # self.client.reset()
 
         self.vector_store = Chroma(client=self.client, collection_name=collection, embedding_function=embedding_function)
 
@@ -28,13 +30,19 @@ class VectorStore:
         """Reset the vector store client."""
         self.client.reset()
 
-    def get_retriever(self) -> VectorStoreRetriever:
+    def get_retriever(self) -> BaseRetriever:
         """Retrieve a VectorStoreRetriever from the Chroma vector store."""
         return self.vector_store.as_retriever()
 
-    def add_documents(self, docs: list[Document]):
+    def add_documents(self, docs: list[Document], verbose: bool = False):
         """Add a list of documents to the vector store."""
-        self.vector_store.add_documents(docs)
+        # todo move up
+        BatchSize = 41666
+        batches = [docs[i:i + BatchSize] for i in range(0, len(docs), BatchSize)]
+
+        for batch in tqdm(batches):
+            self.vector_store.add_documents(documents=batch, verbose=verbose)
+
 
     def similarity_search(self, query: str) -> list[Document]:
         """Perform a similarity search in the vector store with a given query."""

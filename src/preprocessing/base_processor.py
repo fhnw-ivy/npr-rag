@@ -17,3 +17,7 @@ class BaseProcessor:
             docs.append(Document(page_content=chunk, metadata=metadata))
 
         return docs
+
+    def chunk_documents(self, documents: list[Document]) -> list[Document]:
+        self.text_splitter.split_documents(documents)
+        return documents
