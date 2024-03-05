@@ -10,7 +10,7 @@ class VectorStore:
                  host,
                  port,
                  collection):
-        self.client = chromadb.Client(host=self.host, port=port)
+        self.client = chromadb.Client(host=host, port=port)
         self.vector_store = Chroma(self.client, collection=collection)
         self.embedding_function = embedding_function
 
