@@ -1,17 +1,21 @@
+from langchain.chains.query_constructor.base import AttributeInfo
+from langchain.retrievers.self_query.base import SelfQueryRetriever
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_core.embeddings import Embeddings
 from langchain_core.retrievers import BaseRetriever
+from langchain_openai import OpenAI
 
 from src.preprocessing.base_processor import BaseProcessor
 from src.vectorstore import VectorStore
 
-from langchain_openai import OpenAI
-from langchain.retrievers.self_query.base import SelfQueryRetriever
-from langchain.chains.query_constructor.base import AttributeInfo
 
 class EmbeddingStrategy:
+    def __init__(self, embedding_model: Embeddings,
+                 processor: BaseProcessor,
+                 vector_store: VectorStore,
+                 retriever: BaseRetriever = None):
 
-    def __init__(self, embedding_model: Embeddings, processor: BaseProcessor, vector_store: VectorStore, retriever: BaseRetriever=None):
         self.embedding_model = embedding_model
         self.processor = processor
         self.vector_store = vector_store
@@ -19,23 +23,21 @@ class EmbeddingStrategy:
 
     @staticmethod
     def get_default_strategy():
-        model_name = "BAAI/bge-small-en"
-        model_kwargs = {"device": "cpu"}
-        encode_kwargs = {"normalize_embeddings": True}
-        hf = HuggingFaceBgeEmbeddings(
-            model_name=model_name, model_kwargs=model_kwargs, encode_kwargs=encode_kwargs
-        )
+        fake_embeddings = FastEmbedEmbeddings()
 
-        vector_store = VectorStore(embedding_function=hf,
-                                   collection="cleantech-bge-small-en")
+        vector_store = VectorStore(embedding_function=fake_embeddings,
+                                   collection="cleantech-bge-small-en-fake")
 
-        return EmbeddingStrategy(embedding_model=hf, processor=BaseProcessor(hf), vector_store=vector_store)
+        return EmbeddingStrategy(embedding_model=fake_embeddings,
+                                 processor=BaseProcessor(fake_embeddings),
+                                 vector_store=vector_store)
 
     @staticmethod
     def get_custom_strategy():
         model_name = "BAAI/bge-small-en"
         model_kwargs = {"device": "cpu"}
         encode_kwargs = {"normalize_embeddings": True}
+
         hf = HuggingFaceBgeEmbeddings(
             model_name=model_name, model_kwargs=model_kwargs, encode_kwargs=encode_kwargs
         )
@@ -73,11 +75,12 @@ class EmbeddingStrategy:
         vector_store = VectorStore(embedding_function=hf,
                                    collection="cleantech-bge-small-en")
 
-        # Configure retriver
         llm = OpenAI(temperature=0)
         retriever = SelfQueryRetriever.from_llm(
             llm, vector_store.vector_store, document_content_description, metadata_field_info, verbose=True
         )
 
-
-        return EmbeddingStrategy(embedding_model=hf, processor=BaseProcessor(hf), vector_store=vector_store, retriever=retriever)
+        return EmbeddingStrategy(embedding_model=hf,
+                                 processor=BaseProcessor(hf),
+                                 vector_store=vector_store,
+                                 retriever=retriever)

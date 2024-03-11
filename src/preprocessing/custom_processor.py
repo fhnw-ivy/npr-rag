@@ -1,5 +1,3 @@
-from langchain_experimental.text_splitter import SemanticChunker
-
 from src.preprocessing.base_processor import BaseProcessor
 
 
