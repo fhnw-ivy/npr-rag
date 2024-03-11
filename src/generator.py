@@ -1,46 +1,41 @@
+import os
+
 import openai
+from dotenv import load_dotenv
+from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
-from langfuse.callback import CallbackHandler
 
 from src.embedding_strategy import EmbeddingStrategy
-from src.templates import base_template
-
-from dotenv import load_dotenv
-import os
+from src.langfuse import get_langfuse_handler
+from src.prompts import get_prompt
 
 load_dotenv()
 
-def get_openai_model():
-    # TODO: implement Azure model retrieval
 
+def get_openai_model():
+    # TODO: implement Azure model retrieval based on availability
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     return ChatOpenAI()
 
-langfuse_handler = CallbackHandler(
-    secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
-    public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
-    host=os.getenv("LANGFUSE_HOST")
-)
 
 class Generator:
     def __init__(self,
-                 openai_api_key: str,
                  embedding_strategy: EmbeddingStrategy,
-                 template: str = base_template):
+                 rag_prompt_key: str = "base_template"):
+        self.rag_prompt_template = None
+        self.set_rag_prompt_template(rag_prompt_key)
 
-        self.openai_api_key = openai_api_key
-        self.template = template
         self.vectorstore = embedding_strategy.vector_store
         self.retriever = embedding_strategy.retriever
-        openai.api_key = self.openai_api_key
 
-    def set_template(self, template: str):
-        self.template = template
+    def set_rag_prompt_template(self, prompt_key: str, use_langfuse: bool = True):
+        self.rag_prompt_template = get_prompt(prompt_key, from_langfuse=use_langfuse)
 
     def ask(self, question: str) -> tuple[str, list[Document]]:
-        prompt = ChatPromptTemplate.from_template(self.template)
+        prompt = self.rag_prompt_template
+
         model = get_openai_model()
 
         chain = (
@@ -48,10 +43,12 @@ class Generator:
                     "context": self.retriever,
                     "question": RunnablePassthrough()
                 }
-                | prompt
+                | prompt  # TODO: Add token limit check
                 | model
                 | StrOutputParser()
         )
 
-        answer = chain.invoke(question, config={ "callbacks" : [langfuse_handler] })
+        langfuse_handler = get_langfuse_handler()
+        answer = chain.invoke(question, config={"callbacks": [langfuse_handler]})
+
         return answer, self.retriever.get_relevant_documents(question)
