@@ -7,3 +7,6 @@ pandas
 lark
 nltk
 toml
+ragas
+fastembed
+langfuse
