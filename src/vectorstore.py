@@ -12,8 +12,8 @@ class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
                  collection: str,
-                 host: str = config.vector_store['host'],
-                 port: int = config.vector_store['port']):
+                 host: str = config.VECTOR_STORE['host'],
+                 port: int = config.VECTOR_STORE['port']):
         self.client = chromadb.HttpClient(host=host, port=port)
 
         # TODO: Remove this later
