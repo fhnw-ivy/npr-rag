@@ -1,28 +1,47 @@
-from dotenv import load_dotenv
-from langfuse.callback import CallbackHandler
+from enum import Enum
 
-load_dotenv()
+from dotenv import load_dotenv
 from langfuse import Langfuse
 
-langfuse = Langfuse()
+from src.config import SYSTEM_CONFIG
+
+load_dotenv()
+
+langfuse = Langfuse(
+    release=SYSTEM_CONFIG["release"]
+)
+
+
+class LangfuseTag(Enum):
+    production = "production"
+    dev = "dev"
+    eval = "eval"
 
 
 class LangfuseHandler:
-    def __init__(self):
-        # TODO: pass relevant trace information
-        # like mode (production/eval) etc.
-        self.handler = CallbackHandler()
-        assert self.handler.auth_check()
+    def __init__(self,
+                 version: str,
+                 tags: [LangfuseTag] = None,
+                 metadata: dict = None):
+
+        self.trace = langfuse.trace(
+            version=version,
+            name="qa",
+            tags=[tag.value for tag in tags] if tags else None,
+            metadata=metadata
+        )
 
     def get_callback_handler(self):
-        return self.handler
+        return self.trace.get_langchain_handler()
 
-    def _get_trace_id(self):
-        return self.handler.get_trace_id()
+    def add_query(self, query: str):
+        self.trace.update(input=query)
+
+    def add_output(self, output: str):
+        self.trace.update(output=output)
 
     def score(self, name, value, comment=None):
-        _ = langfuse.score(
-            trace_id=self._get_trace_id(),
+        self.trace.score(
             name=name,
             value=value,
             comment=comment

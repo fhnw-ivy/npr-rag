@@ -27,7 +27,10 @@ class Generator:
     def __init__(self,
                  embedding_strategy: EmbeddingStrategy,
                  rag_prompt_key: str = "base_template"):
+        self.rag_prompt_key = rag_prompt_key
         self.rag_prompt = Prompt.get(rag_prompt_key)
+
+        self.embedding_strategy = embedding_strategy
         self.vectorstore = embedding_strategy.vector_store
         self.retriever = embedding_strategy.retriever
 
@@ -46,7 +49,19 @@ class Generator:
                 | StrOutputParser()
         )
 
-        handler = LangfuseHandler()
+        metadata = {
+            "embedding_strategy": self.embedding_strategy.get_info(),
+            "prompt_versioning": {
+                self.rag_prompt_key: self.rag_prompt.version
+            }
+        }
+
+        handler = LangfuseHandler(version=self.embedding_strategy.get_version_string(),
+                                  metadata=metadata)
+
         answer = chain.invoke(question, config={"callbacks": [handler.get_callback_handler()]})
+
+        handler.add_query(question)
+        handler.add_output(answer)
 
         return answer, self.retriever.get_relevant_documents(question)
