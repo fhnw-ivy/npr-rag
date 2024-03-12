@@ -12,16 +12,16 @@ langfuse = Langfuse(
 )
 
 
-class LangfuseTag(Enum):
+class TraceTag(Enum):
     production = "production"
     dev = "dev"
     eval = "eval"
 
 
-class LangfuseHandler:
+class TraceManager:
     def __init__(self,
                  version: str,
-                 tags: [LangfuseTag] = None,
+                 tags: [TraceTag] = None,
                  metadata: dict = None):
 
         self.trace = langfuse.trace(

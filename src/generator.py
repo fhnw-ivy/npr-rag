@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
 
 from src.embedding_strategy import EmbeddingStrategy
-from src.langfuse import LangfuseHandler
+from src.langfuse import TraceManager, TraceTag
 from src.prompts import Prompt
 
 load_dotenv()
@@ -56,8 +56,9 @@ class Generator:
             }
         }
 
-        handler = LangfuseHandler(version=self.embedding_strategy.get_version_string(),
-                                  metadata=metadata)
+        handler = TraceManager(version=self.embedding_strategy.get_version_string(),
+                               tags=[TraceTag.production],
+                               metadata=metadata)
 
         answer = chain.invoke(question, config={"callbacks": [handler.get_callback_handler()]})
 
