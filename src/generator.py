@@ -16,6 +16,7 @@ load_dotenv()
 
 def get_openai_model():
     # TODO: implement Azure model retrieval based on availability
+    # todo is this even necessary?
     openai.api_key = os.getenv("OPENAI_API_KEY")
     return ChatOpenAI()
 
