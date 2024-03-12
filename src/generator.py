@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
 
 from src.embedding_strategy import EmbeddingStrategy
-from src.langfuse import get_langfuse_handler
+from src.langfuse import LangfuseHandler
 from src.prompts import get_prompt
 
 load_dotenv()
@@ -48,7 +48,9 @@ class Generator:
                 | StrOutputParser()
         )
 
-        langfuse_handler = get_langfuse_handler()
-        answer = chain.invoke(question, config={"callbacks": [langfuse_handler]})
+        handler = LangfuseHandler()
+        answer = chain.invoke(question, config={"callbacks": [handler.get_callback_handler()]})
+
+        handler.score("test_metric", 3)
 
         return answer, self.retriever.get_relevant_documents(question)
