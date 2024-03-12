@@ -56,6 +56,28 @@ class EmbeddingStrategy:
             vector_store=vector_store)
 
     @staticmethod
+    def get_bge_strategy():
+        model_name = "BAAI/bge-small-en"
+        model_kwargs = {"device": "cpu"}
+        encode_kwargs = {"normalize_embeddings": True}
+
+        hf = HuggingFaceBgeEmbeddings(
+            model_name=model_name, model_kwargs=model_kwargs, encode_kwargs=encode_kwargs
+        )
+
+        # Metadata schema based on the values on the CSV
+        vector_store = VectorStore(embedding_function=hf,
+                                   collection="cleantech-bge-small-en")
+
+        return EmbeddingStrategy(
+            name="BGEStrategy",
+            version=1,
+            embedding_model=hf,
+            processor=BaseProcessor(hf),
+            vector_store=vector_store
+        )
+
+    @staticmethod
     def get_custom_strategy():
         model_name = "BAAI/bge-small-en"
         model_kwargs = {"device": "cpu"}

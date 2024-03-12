@@ -34,6 +34,7 @@ class Generator:
         self.embedding_strategy = embedding_strategy
         self.vectorstore = embedding_strategy.vector_store
         self.retriever = embedding_strategy.retriever
+        self.manager = None
 
     def ask(self, question: str) -> tuple[str, list[Document]]:
         prompt_template = self.rag_prompt.template
@@ -57,13 +58,15 @@ class Generator:
             }
         }
 
-        handler = TraceManager(version=self.embedding_strategy.get_version_string(),
-                               tags=[TraceTag.production],
-                               metadata=metadata)
+        self.manager = TraceManager(version=self.embedding_strategy.get_version_string(),
+                                    tags=[TraceTag.production],
+                                    metadata=metadata)
 
-        answer = chain.invoke(question, config={"callbacks": [handler.get_callback_handler()]})
+        answer = chain.invoke(question, config={"callbacks": [self.manager.get_callback_handler()]})
 
-        handler.add_query(question)
-        handler.add_output(answer)
+        self.manager.add_query(question)
+        self.manager.add_output(answer)
 
         return answer, self.retriever.get_relevant_documents(question)
+
+
