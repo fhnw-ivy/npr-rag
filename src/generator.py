@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
 
 from src.embedding_strategy import EmbeddingStrategy
 from src.langfuse import LangfuseHandler
@@ -18,6 +18,9 @@ def get_openai_model():
     # TODO: implement Azure model retrieval based on availability
     openai.api_key = os.getenv("OPENAI_API_KEY")
     return ChatOpenAI()
+
+def get_azure_openai_model():
+    return AzureChatOpenAI()
 
 
 class Generator:
