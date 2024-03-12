@@ -1,23 +1,23 @@
+import os
+
 import chromadb
+from dotenv import load_dotenv
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.documents.base import Document
 from langchain_core.embeddings import Embeddings
 from langchain_core.retrievers import BaseRetriever
 from tqdm import tqdm
 
-from src import config
+load_dotenv()
 
 
 class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
                  collection: str,
-                 host: str = config.VECTOR_STORE['host'],
-                 port: int = config.VECTOR_STORE['port']):
+                 host: str = os.getenv('CHROMADB_HOST'),
+                 port: int = os.getenv('CHROMADB_PORT')):
         self.client = chromadb.HttpClient(host=host, port=port)
-
-        # TODO: Remove this later
-        self.client.reset()
 
         self.vector_store = Chroma(client=self.client,
                                    collection_name=collection,

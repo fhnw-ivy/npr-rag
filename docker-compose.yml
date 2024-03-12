@@ -10,7 +10,7 @@ services:
     hostname: chromadb
     environment:
       - IS_PERSISTENT=TRUE
-      - ALLOW_RESET=TRUE
+      - ALLOW_RESET=FALSE
     volumes:
       - chroma-data:/chroma/chroma/
     ports:
