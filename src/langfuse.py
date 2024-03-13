@@ -40,7 +40,7 @@ class TraceManager:
     def add_output(self, output: str):
         self.trace.update(output=output)
 
-    def score(self, name, value, comment=None):
+    def add_score(self, name, value, comment=None):
         self.trace.score(
             name=name,
             value=value,

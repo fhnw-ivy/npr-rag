@@ -10,3 +10,4 @@ toml
 ragas
 fastembed
 langfuse
+rapidfuzz
