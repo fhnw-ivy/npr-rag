@@ -22,12 +22,12 @@ class Evaluator:
     
     def _convert_to_dataset(self, question: str, answer: str, context: list[Document]):
         content_list = [doc.page_content for doc in context if doc.page_content is not None]
-
-        return Dataset.from_dict({
+        dataset = Dataset.from_dict({
             'question': [question],
             'answer': [answer],
             'contexts' : [content_list]
         })
+        return dataset
 
     def ragas_evaluate(self, question: str, answer: str, context: list[Document], metrics: list[Metric] = None):
         custom_metrics = metrics or [
@@ -41,3 +41,4 @@ class Evaluator:
         )
 
         return result
+    

@@ -83,7 +83,8 @@ class Generator:
                                                metrics)
         
         for k, v in scores.items():
-            self.manager.add_score(k, v)
+            value = v if str(v) != 'nan' else 0.0
+            self.manager.add_score(k, value)
 
         self.manager.add_query(question)
         self.manager.add_output(answer)
