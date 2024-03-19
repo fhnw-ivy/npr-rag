@@ -94,6 +94,12 @@ def main_cli(dataset_path, testset_path, testset_size, verbose):
 
 
 if __name__ == "__main__":
+    print("This process may be very costly in terms of money. Are you sure you want to proceed?")
+    user_input = input("Type 'yes' to proceed: ")
+    if user_input.lower() != "yes":
+        print("Aborted.")
+        exit(0)
+
     parser = argparse.ArgumentParser(description="Generate a test set from a dataset or pre-processed documents.")
     parser.add_argument("--dataset_path", type=str, help="Path to the dataset CSV file")
     parser.add_argument("--testset_path", required=True, help="Path to save the generated testset CSV")
