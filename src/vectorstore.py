@@ -14,10 +14,14 @@ load_dotenv()
 class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
-                 collection: str,
+                 collection: str = None,
                  host: str = os.getenv('CHROMADB_HOST'),
                  port: int = os.getenv('CHROMADB_PORT')):
+
         self.client = chromadb.HttpClient(host=host, port=port)
+
+        if collection is None:
+            collection = embedding_function.__class__.__name__
 
         self.vector_store = Chroma(client=self.client,
                                    collection_name=collection,
@@ -38,7 +42,9 @@ class VectorStore:
     def add_documents(self, docs: list[Document], batch_size=41666, verbose: bool = False):
         """Add a list of documents to the vector store."""
         batch_size = min(batch_size, 41666)
-        batches = [docs[i:i + batch_size] for i in range(0, len(docs), batch_size)] # Check if this embeds documents twice when total size is not a multiple of batch_size
+
+        # TODO: Check if this embeds documents twice when total size is not a multiple of batch_size
+        batches = [docs[i:i + batch_size] for i in range(0, len(docs), batch_size)]
 
         for batch in tqdm(batches):
             self.vector_store.add_documents(documents=batch, verbose=verbose)
@@ -46,3 +52,5 @@ class VectorStore:
     def similarity_search(self, query: str) -> list[Document]:
         """Perform a similarity search in the vector store with a given query."""
         return self.vector_store.similarity_search(query)
+
+    # TODO: Add more search methods to interact with the vector store
