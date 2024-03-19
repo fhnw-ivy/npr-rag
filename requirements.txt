@@ -8,6 +8,6 @@ lark
 nltk
 toml
 ragas
-fastembed
-langfuse
 rapidfuzz
+arize-phoenix
+arize-phoenix-evals

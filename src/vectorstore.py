@@ -53,4 +53,8 @@ class VectorStore:
         """Perform a similarity search in the vector store with a given query."""
         return self.vector_store.similarity_search(query)
 
+    def similarity_search_w_scores(self, query: str) -> list[tuple[Document, float]]:
+        """Perform a similarity search in the vector store with a given query."""
+        return self.vector_store.similarity_search_with_score(query)
+
     # TODO: Add more search methods to interact with the vector store
