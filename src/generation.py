@@ -31,7 +31,7 @@ def get_llm_model(model: LLMModel = LLMModel.GPT_3_5_TURBO):
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     if model == LLMModel.GPT_3_5_TURBO:
-        return ChatOpenAI()
+        return ChatOpenAI(model_name="gpt-3.5-turbo")
 
     if model == LLMModel.GPT_3_AZURE:
         return AzureChatOpenAI()
