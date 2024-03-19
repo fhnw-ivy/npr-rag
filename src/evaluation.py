@@ -8,6 +8,8 @@ from ragas.metrics import (
     context_precision,
 )
 
+from src.generation import get_llm_model
+
 
 def create_dataset(question: str, answer: str, contexts: list[str], ground_truth: str = "") -> Dataset:
     """Converts input parameters into a Dataset object."""
@@ -28,5 +30,6 @@ class EvaluationAssistant:
     def assess(self, question: str, answer: str, contexts: list[str], ground_truth: str = "") -> pd.DataFrame:
         """Assesses the quality of an answer with respect to a question, contexts, and an optional ground truth."""
         dataset = create_dataset(question, answer, contexts, ground_truth)
-        scores = ragas_eval(dataset, metrics=self.metrics).to_pandas()
+
+        scores = ragas_eval(dataset, metrics=self.metrics, llm=get_llm_model()).to_pandas()
         return scores
