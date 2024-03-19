@@ -58,7 +58,7 @@ def generate_testset(documents: list[Document],
                      verbose=False) -> Dataset:
     """Generates a testset based on given documents and distribution."""
     if distributions is None:
-        distributions = {simple: 0.5, reasoning: 0.25, multi_context: 0.25}
+        distributions = {simple: 0.6, reasoning: 0.3, multi_context: 0.1}
     else:
         assert sum(distributions.values()) == 1
         assert all([d in [simple, reasoning, multi_context] for d in distributions.keys()])
@@ -72,18 +72,24 @@ def generate_testset(documents: list[Document],
 
 def generate_testset_and_save(documents, strategy, testset_path, testset_size, verbose):
     generator_llm, critic_llm = get_llm_model(), get_llm_model()  # Get default LLMs
+    # get total characters for documents
+    total_chars = sum([len(doc.page_content) for doc in documents]) + sum([len(doc.metadata) for doc in documents])
 
-    testset = generate_testset(
-        documents=documents[:5],
-        generator_llm=generator_llm,
-        critic_llm=critic_llm,
-        embeddings=strategy.embedding_model,
-        test_size=testset_size,
-        verbose=verbose
-    )
+    logging.info(f"Total characters in documents: {total_chars}")
 
-    testset_df = testset.to_pandas()
-    testset_df.to_csv(testset_path, index=False)
+    for i in range(0, len(documents), 100):
+        batch = documents[i:i+100]
+        testset = generate_testset(
+            documents=batch,
+            generator_llm=generator_llm,
+            critic_llm=critic_llm,
+            embeddings=strategy.embedding_model,
+            test_size=testset_size,
+            verbose=verbose
+        )
+
+        testset_df = testset.to_pandas()
+        testset_df.to_csv(testset_path, index=False, mode='a', header=False)
 
 
 def main_cli(dataset_path, testset_path, testset_size, verbose):
