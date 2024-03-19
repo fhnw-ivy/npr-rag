@@ -4,6 +4,7 @@ import openai
 from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
 
@@ -17,17 +18,14 @@ load_dotenv()
 from ragas.metrics import (
     answer_relevancy,
     faithfulness,
-    context_recall,
-    context_precision,
 )
 
 def get_openai_model():
-    # TODO: implement Azure model retrieval based on availability
-    # todo is this even necessary?
     openai.api_key = os.getenv("OPENAI_API_KEY")
     return ChatOpenAI()
 
 def get_azure_openai_model():
+    # FIXME broken in current state
     return AzureChatOpenAI()
 
 
@@ -43,27 +41,37 @@ class Generator:
         self.retriever = embedding_strategy.retriever
         self.manager = None,
         self.evaluator = Evaluator()
+        self.chain = None
+        self.model = None
+
+    def set_chain(self, chain):
+        self.chain = chain
+
+    def set_model(self, model):
+        self.model = model
 
     def ask(self, question: str) -> tuple[str, list[Document]]:
-        prompt_template = self.rag_prompt.template
 
-        model = get_openai_model()
+        if self.model is None:
+            model = get_openai_model()
+        else:
+            model = self.model
 
-        chain = (
-                {
-                    "context": self.retriever,
-                    "question": RunnablePassthrough()
-                }
-                | prompt_template  # TODO: Add token limit check
-                | model
-                | StrOutputParser()
-        )
+        if self.chain is None:
+            chain = (
+                    {
+                        "context": self.retriever,
+                        "question": RunnablePassthrough()
+                    }
+                    | ChatPromptTemplate.from_template(Prompt.DEFAULT_PROMPT.get("base_template")[0])
+                    | model
+                    | StrOutputParser()
+            )
+        else:
+            chain = self.chain
 
         metadata = {
             "embedding_strategy": self.embedding_strategy.get_info(),
-            "prompt_versioning": {
-                self.rag_prompt_key: self.rag_prompt.version
-            }
         }
 
         self.manager = TraceManager(version=self.embedding_strategy.get_version_string(),
