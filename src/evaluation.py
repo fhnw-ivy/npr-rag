@@ -1,8 +1,5 @@
 import pandas as pd
 from datasets import Dataset
-from langchain_core.documents.base import Document
-from langchain_core.embeddings import Embeddings
-from langchain_core.language_models import BaseChatModel
 from ragas import evaluate as ragas_eval
 from ragas.metrics import (
     answer_relevancy,
@@ -10,8 +7,6 @@ from ragas.metrics import (
     context_recall,
     context_precision,
 )
-from ragas.testset.evolutions import simple, reasoning, multi_context
-from ragas.testset.generator import TestsetGenerator
 
 
 def create_dataset(question: str, answer: str, contexts: list[str], ground_truth: str = "") -> Dataset:
@@ -22,24 +17,6 @@ def create_dataset(question: str, answer: str, contexts: list[str], ground_truth
         'contexts': [contexts],
         'ground_truth': [ground_truth] if ground_truth else []
     })
-
-
-def generate_testset(documents: list[Document],
-                     generator_llm: BaseChatModel,
-                     critic_llm: BaseChatModel,
-                     embeddings: Embeddings,
-                     test_size: int = 10,
-                     distributions=None,
-                     verbose=False) -> Dataset:
-    """Generates a testset based on given documents and distribution."""
-    if distributions is None:
-        distributions = {simple: 0.5, reasoning: 0.25, multi_context: 0.25}
-
-    generator = TestsetGenerator.from_langchain(generator_llm, critic_llm, embeddings)
-    return generator.generate_with_langchain_docs(documents,
-                                                  test_size=test_size,
-                                                  distributions=distributions,
-                                                  with_debugging_logs=verbose)
 
 
 class EvaluationAssistant:
