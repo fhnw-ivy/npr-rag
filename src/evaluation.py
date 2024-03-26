@@ -91,6 +91,8 @@ class RAGEvaluator:
 
             if df_has_actual_answers:
                 dataset['actual_answer'] += [item['answer']]
+                dataset['question_complexity'] += [item['question_complexity']]
+                dataset['answer_complexity'] += [item['answer_complexity']]
 
         self.dataset = Dataset.from_dict(dataset)
         return self.dataset
