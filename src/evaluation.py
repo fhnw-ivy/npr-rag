@@ -68,7 +68,7 @@ class RAGEvaluator:
         assert all(col in df.columns for col in required_cols), \
             f"DataFrame must contain columns {required_cols}, but got {df.columns} instead."
 
-        dataset = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
+        dataset = {"question": [], "answer": [], "contexts": [], "ground_truth": [], "question_complexity": []}
 
         df_has_actual_answers = "answer" in df.columns
         if df_has_actual_answers:
@@ -92,7 +92,7 @@ class RAGEvaluator:
             if df_has_actual_answers:
                 dataset['actual_answer'] += [item['answer']]
                 dataset['question_complexity'] += [item['question_complexity']]
-                dataset['answer_complexity'] += [item['answer_complexity']]
+                # dataset['answer_complexity'] += [item['answer_complexity']]
 
         self.dataset = Dataset.from_dict(dataset)
         return self.dataset
