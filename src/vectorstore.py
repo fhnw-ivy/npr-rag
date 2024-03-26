@@ -35,6 +35,10 @@ class VectorStore:
         """Reset the vector store client."""
         self.client.reset()
 
+    def delete_collection(self) -> None:
+        """Reset the collection in the vector store."""
+        self.vector_store.delete_collection()
+
     def get_retriever(self) -> BaseRetriever:
         """Retrieve a VectorStoreRetriever from the Chroma vector store."""
         return self.vector_store.as_retriever()
