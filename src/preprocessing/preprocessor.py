@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import ast
 import numpy as np
@@ -33,13 +34,28 @@ class Preprocessor:
             return lang
         except LangDetectException:
             return np.nan
-    
+
+    def _remove_html(self):
+        self.df['content'] = self.df['content'].apply(self._clean_html)
+
+    def _remove_special_chars(self):
+        self.df['content'] = self.df['content'].apply(self.clean_special_chars)
+
+    def _clean_html(self, text):
+        cleanr = re.compile('<.*?>')
+        cleantext = re.sub(cleanr, '', text)
+        return cleantext
+
+    def clean_special_chars(self, text):
+        return re.sub(r'[^a-zA-Z0-9\s]', '', text)
     def preprocess(self) -> pd.DataFrame:
         self.df['language'] = self.df['content'].apply(self._safe_detect)
         self.df['content'] = self.df['content'].apply(ast.literal_eval)
         self.df = self.df.explode('content')
         
         self._remove_language()
+        self._remove_html()
+        self._remove_special_chars()
         self._remove_duplicate_chunks()
         
         return self.df
