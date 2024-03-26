@@ -2,6 +2,7 @@ import nest_asyncio
 import pandas as pd
 from datasets import Dataset
 from langchain.chains import LLMChain
+from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models import LLM
 from ragas import evaluate, RunConfig
@@ -29,13 +30,11 @@ class RAGEvaluator:
                  embeddings: Embeddings,
                  llm_model: LLM,
                  dataset: Dataset = None,
-                 metrics=None,
-                 is_async=True,
-                 raise_exceptions=True):
+                 metrics=None):
         """
         Initializes the RAG evaluator with the specified chain, metrics, embeddings, and LLM model.
         :param chain: The chain to use for generating answers and contexts.
-        :param metrics: A list of metric functions to evaluate the dataset.
+        :param metrics: A list of metric functions to evaluate the dataset. When None, the default metrics (answer correctness, context precision, and context recall) are used.
         :param embeddings: Embeddings to use for evaluation.
         :param llm_model: The LLM model to use.
         """
@@ -61,6 +60,10 @@ class RAGEvaluator:
         :param df: A DataFrame with questions and relevant chunks for evaluation.
         :return: A dataset for evaluation.
         """
+        if self.dataset is not None:
+            print("Dataset already set. Explicitly set the property to overwrite it.")
+            return self.dataset
+
         required_cols = ["question", "relevant_chunk"]
         assert all(col in df.columns for col in required_cols), \
             f"DataFrame must contain columns {required_cols}, but got {df.columns} instead."
@@ -79,6 +82,8 @@ class RAGEvaluator:
             answer, contexts = chain_result['answer'], chain_result['context']
 
             assert type(contexts) == list, f"Contexts must be a list, but got {type(contexts)} instead."
+            assert all(type(c) == Document for c in contexts), \
+                f"Contexts must be a list of Documents, but got {type(contexts[0])} instead."
 
             dataset['answer'] += [answer]
             dataset['contexts'] += [[str(c.page_content) for c in contexts]]
