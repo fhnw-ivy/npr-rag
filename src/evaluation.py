@@ -1,9 +1,10 @@
 import nest_asyncio
+import pandas as pd
 from datasets import Dataset
 from langchain.chains import LLMChain
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models import LLM
-from ragas import evaluate
+from ragas import evaluate, RunConfig
 from ragas.metrics import (
     answer_correctness,
     context_precision,
@@ -37,8 +38,6 @@ class RAGEvaluator:
         :param metrics: A list of metric functions to evaluate the dataset.
         :param embeddings: Embeddings to use for evaluation.
         :param llm_model: The LLM model to use.
-        :param is_async: Whether to evaluate asynchronously.
-        :param raise_exceptions: Whether to raise exceptions during evaluation.
         """
         nest_asyncio.apply()
 
@@ -55,8 +54,6 @@ class RAGEvaluator:
         self.chain = chain
         self.embeddings = embeddings
         self.llm_model = llm_model
-        self.is_async = is_async
-        self.raise_exceptions = raise_exceptions
 
     def create_dataset_from_df(self, df) -> Dataset:
         """
@@ -84,7 +81,7 @@ class RAGEvaluator:
             assert type(contexts) == list, f"Contexts must be a list, but got {type(contexts)} instead."
 
             dataset['answer'] += [answer]
-            dataset['contexts'] += contexts
+            dataset['contexts'] += [[str(c.page_content) for c in contexts]]
             dataset['ground_truth'] += [item['relevant_chunk']]
 
             if df_has_actual_answers:
@@ -93,29 +90,13 @@ class RAGEvaluator:
         self.dataset = Dataset.from_dict(dataset)
         return self.dataset
 
-    def create_dataset_from_df_async(self, df, max_concurrency=2) -> Dataset:
-        assert all(col in df.columns for col in ["question", "relevant_chunk"]), \
-            "DataFrame must contain columns ['question', 'relevant_chunk']."
-
-        # If the chain can be invoked in batches for efficiency:
-        questions = df['question'].tolist()
-        # Assuming batch_invoke is implemented to handle batch processing
-        results = self.chain.batch(questions, config={"max_concurrency": max_concurrency})
-
-        # Directly use results to create the dataset dictionary
-        dataset = {
-            "question": questions,
-            "answer": [result['answer'] for result in results],
-            "contexts": [result['context'] for result in results],
-            "ground_truth": df['relevant_chunk'].tolist()
-        }
-
-        if "answer" in df.columns:
-            dataset["actual_answer"] = df['answer'].tolist()
-
-        return Dataset.from_dict(dataset)
-
-    def evaluate(self):
+    def evaluate(self,
+                 raise_exceptions=True,
+                 is_async=True,
+                 timeout=60,
+                 max_retries=10,
+                 max_wait=60,
+                 max_workers=16) -> pd.DataFrame:
         """
         Evaluates the RAG pipeline using the specified dataset and metrics.
         :return: Evaluation results.
@@ -123,12 +104,20 @@ class RAGEvaluator:
         assert self.dataset is not None, "Dataset must be set before evaluation."
         assert self.metrics is not None, "Metrics must be set before evaluation."
 
+        run_config = RunConfig(
+            timeout=timeout,
+            max_retries=max_retries,
+            max_wait=max_wait,
+            max_workers=max_workers,
+        )
+
         eval_results = evaluate(
             self.dataset,
             metrics=self.metrics,
             embeddings=self.embeddings,
-            is_async=self.is_async,
-            raise_exceptions=self.raise_exceptions,
-            llm=self.llm_model
+            is_async=is_async,
+            raise_exceptions=raise_exceptions,
+            llm=self.llm_model,
+            run_config=run_config
         )
-        return eval_results
+        return eval_results.to_pandas()
