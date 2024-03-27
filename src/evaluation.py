@@ -10,6 +10,9 @@ from ragas.metrics import (
     answer_correctness,
     context_precision,
     context_recall,
+    context_relevancy,
+    faithfulness,
+    answer_relevancy,
 )
 from tqdm.auto import tqdm
 
@@ -42,9 +45,12 @@ class RAGEvaluator:
 
         if metrics is None:
             self.metrics = [
+                answer_relevancy,
                 answer_correctness,
                 context_precision,
                 context_recall,
+                context_relevancy,
+                faithfulness,
             ]
         else:
             self.metrics = metrics
@@ -68,11 +74,12 @@ class RAGEvaluator:
         assert all(col in df.columns for col in required_cols), \
             f"DataFrame must contain columns {required_cols}, but got {df.columns} instead."
 
-        dataset = {"question": [], "answer": [], "contexts": [], "ground_truth": [], "question_complexity": []}
+        dataset = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
 
         df_has_actual_answers = "answer" in df.columns
         if df_has_actual_answers:
             dataset["actual_answer"] = []
+            dataset["question_complexity"] = []
 
         for _, item in tqdm(df.iterrows(), total=len(df)):
             question = item['question']
@@ -91,8 +98,7 @@ class RAGEvaluator:
 
             if df_has_actual_answers:
                 dataset['actual_answer'] += [item['answer']]
-                dataset['question_complexity'] += [item['question_complexity']]
-                # dataset['answer_complexity'] += [item['answer_complexity']]
+                dataset["question_complexity"] += [item["question_complexity"]]
 
         self.dataset = Dataset.from_dict(dataset)
         return self.dataset
