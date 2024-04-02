@@ -1,13 +1,12 @@
 import nest_asyncio
 import pandas as pd
 import seaborn as sns
-from matplotlib import pyplot as plt
 from datasets import Dataset
 from langchain.chains import LLMChain
 from langchain.evaluation import load_evaluator, EvaluatorType
-from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models import LLM
+from matplotlib import pyplot as plt
 from ragas import evaluate, RunConfig
 from ragas.metrics import (
     answer_correctness,
@@ -15,7 +14,14 @@ from ragas.metrics import (
     context_recall,
     context_relevancy,
     faithfulness,
-    answer_relevancy
+    answer_relevancy,
+    answer_similarity,
+    context_entity_recall,
+)
+from ragas.metrics.critique import (
+    conciseness,
+    coherence,
+    correctness
 )
 from tqdm.auto import tqdm
 
@@ -35,7 +41,6 @@ class RAGEvaluator:
                  chain: LLMChain,
                  embeddings: Embeddings,
                  llm_model: LLM,
-                 metrics: list,
                  dataset: Dataset = None):
         """
         Initializes the RAG evaluator with the specified chain, metrics, embeddings, and LLM model.
@@ -43,11 +48,26 @@ class RAGEvaluator:
         :param embeddings: Embeddings to use for evaluation.
         :param llm_model: The LLM model to use.
         :param dataset: The ragas dataset to use for evaluation. When None, the dataset must be set explicitly before evaluation.
-        :param metrics: A list of metric functions to evaluate the dataset. When None, the default metrics (answer correctness, context precision, and context recall) are used.
         """
         nest_asyncio.apply()
 
-        self.metrics = metrics
+        self.metrics = [
+            faithfulness,
+            answer_correctness,
+
+            context_precision,
+            context_recall,
+            context_relevancy,
+            context_entity_recall,
+
+            answer_relevancy,
+            answer_similarity,
+
+            conciseness,
+            coherence,
+            correctness
+        ]
+
         self.dataset = dataset
         self.chain = chain
         self.embeddings = embeddings
@@ -137,14 +157,14 @@ class RAGEvaluator:
             llm=self.llm_model,
             run_config=run_config
         )
+
         eval_results_df = ragas_eval_results.to_pandas()
 
-        if 'answer' in eval_results_df.columns and 'contexts' in eval_results_df.columns:
-            for i, row in tqdm(eval_results_df.iterrows(), total=len(eval_results_df), desc="Reasoning"):
-                question, answer, contexts = row['question'], row['answer'], row['contexts']
-                result = self.reason(question, answer, contexts)
-                reasoning = result['reasoning']
-                eval_results_df.at[i, 'reasoning'] = reasoning
+        for i, row in tqdm(eval_results_df.iterrows(), total=len(eval_results_df), desc="Reasoning"):
+            question, answer, contexts = row['question'], row['answer'], row['contexts']
+            result = self.reason(question, answer, contexts)
+            reasoning = result['reasoning']
+            eval_results_df.at[i, 'reasoning'] = reasoning
 
         self.eval_results = eval_results_df
         return eval_results_df
@@ -169,35 +189,3 @@ class RAGEvaluator:
         plt.ylabel('Score')
         plt.tight_layout()
         plt.show()
-
-    @staticmethod
-    def create_retrieval_evaluator(rag_chain: LLMChain, embeddings: Embeddings, llm_model: LLM) -> 'RAGEvaluator':
-        """
-        Creates a RAG evaluator assessing the retrieval aspects of the pipeline.
-        :param rag_chain: The chain to use for generating answers and contexts.
-        :param embeddings: Embeddings to use for evaluation.
-        :param llm_model: The LLM model to use.
-        :return: A RAG evaluator for retrieval evaluation.
-        """
-        retrieval_metrics = [
-            context_precision,
-            context_recall,
-            context_relevancy,
-            faithfulness,
-        ]
-        return RAGEvaluator(rag_chain, embeddings, llm_model, metrics=retrieval_metrics)
-
-    @staticmethod
-    def create_generation_evaluator(rag_chain: LLMChain, embeddings: Embeddings, llm_model: LLM) -> 'RAGEvaluator':
-        """
-        Creates a RAG evaluator assessing the generation aspects of the pipeline.
-        :param rag_chain: The chain to use for generating answers and contexts.
-        :param embeddings: Embeddings to use for evaluation.
-        :param llm_model: The LLM model to use.
-        :return: A RAG evaluator for generation evaluation.
-        """
-        generation_metrics = [
-            answer_correctness,
-            answer_relevancy,
-        ]
-        return RAGEvaluator(rag_chain, embeddings, llm_model, metrics=generation_metrics)
