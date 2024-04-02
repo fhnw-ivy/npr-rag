@@ -18,7 +18,11 @@ class VectorStore:
                  host: str = os.getenv('CHROMADB_HOST'),
                  port: int = os.getenv('CHROMADB_PORT')):
 
-        self.client = chromadb.HttpClient(host=host, port=port)
+        if host is None or port is None:
+            print("Warning: No host or port provided. Using local ChromaDB client. Data will not be persisted.")
+            self.client = chromadb.Client()
+        else:
+            self.client = chromadb.HttpClient(host=host, port=port)
 
         if collection is None:
             collection = embedding_function.__class__.__name__
@@ -61,4 +65,7 @@ class VectorStore:
         """Perform a similarity search in the vector store with a given query."""
         return self.vector_store.similarity_search_with_score(query)
 
-    # TODO: Add more search methods to interact with the vector store
+    def __repr__(self) -> str:
+        return f"VectorStore(embedding_function={self.vector_store.embedding_function.__class__.__name__}, " \
+               f"collection={self.vector_store.collection_name}, " \
+               f"host={self.client.host}, port={self.client.port})"
