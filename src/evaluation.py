@@ -1,5 +1,7 @@
 import nest_asyncio
 import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
 from datasets import Dataset
 from langchain.chains import LLMChain
 from langchain_core.documents import Document
@@ -16,6 +18,7 @@ from ragas.metrics import (
 )
 from tqdm.auto import tqdm
 
+from .evaluation import RAGEvaluator
 
 def create_dataset(question: str, answer: str, contexts: list[str], ground_truth: str) -> Dataset:
     """Converts input parameters into a Dataset object."""
@@ -59,6 +62,8 @@ class RAGEvaluator:
         self.chain = chain
         self.embeddings = embeddings
         self.llm_model = llm_model
+        
+        self.eval_results = None
 
     def create_dataset_from_df(self, df) -> Dataset:
         """
@@ -124,7 +129,7 @@ class RAGEvaluator:
             max_workers=max_workers,
         )
 
-        eval_results = evaluate(
+        self.eval_results = evaluate(
             self.dataset,
             metrics=self.metrics,
             embeddings=self.embeddings,
@@ -133,4 +138,22 @@ class RAGEvaluator:
             llm=self.llm_model,
             run_config=run_config
         )
-        return eval_results.to_pandas()
+        
+        return self.eval_results.to_pandas()
+    
+    def summarize_metrics(self):
+        """
+        Summarizes the metrics data for the Retriever Augmented Generation Pipeline.
+
+        Returns:
+        - A summary plot of the metrics.
+        """
+        metrics_data = self.eval_results.to_pandas().iloc[:, 5:]
+        
+        plt.figure(figsize=(10, 6))
+        sns.barplot(data=metrics_data)
+        plt.title('Evaluation Metrics Summary')
+        plt.xticks(rotation=45)
+        plt.ylabel('Score')
+        plt.tight_layout()
+        plt.show()
