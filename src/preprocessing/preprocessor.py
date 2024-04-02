@@ -5,9 +5,11 @@ import numpy as np
 from langdetect import detect, LangDetectException
 
 class Preprocessor:
-    def __init__(self, dataframe: pd.DataFrame, verbose=False) -> None:
+    def __init__(self, dataframe: pd.DataFrame, explode=True, verbose=False, concatenate_contents=False) -> None:
         self.df = dataframe
+        self.explode = explode
         self.verbose = verbose
+        self.concatenate_contents = concatenate_contents
     
     def _remove_duplicate_chunks(self):
         n_rows = self.df.shape[0]
@@ -26,7 +28,6 @@ class Preprocessor:
         if self.verbose:
             print(f'Dropped {n_rows - len(self.df)} non-english chunks')
         
-    
     def _safe_detect(self, text):
         text = str(text)
         try:
@@ -48,6 +49,10 @@ class Preprocessor:
 
     def clean_special_chars(self, text):
         return re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    
+    def _concatenate_contents(self):
+        self.df['content'] = self.df['content'].apply(lambda x: ' '.join(x))
+    
     def preprocess(self) -> pd.DataFrame:
         self.df['language'] = self.df['content'].apply(self._safe_detect)
         self.df['content'] = self.df['content'].apply(ast.literal_eval)
@@ -57,5 +62,17 @@ class Preprocessor:
         self._remove_html()
         self._remove_special_chars()
         self._remove_duplicate_chunks()
+        
+        if not self.explode:
+            self.df = self.df.groupby('Unnamed: 0').agg({'content': list, 
+                                                         'language': 'first', 
+                                                         'title': 'first', 
+                                                         'date': 'first', 
+                                                         'author': 'first',	
+                                                         'domain': 'first', 
+                                                         'url': 'first'}).reset_index()
+            
+        if self.concatenate_contents:
+            self._concatenate_contents()
         
         return self.df
