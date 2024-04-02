@@ -85,16 +85,15 @@ class RAGEvaluator:
             print("Dataset already set. Explicitly set the property to overwrite it.")
             return self.dataset
 
-        required_cols = ["question", "relevant_chunk"]
-        assert all(col in df.columns for col in required_cols), \
-            f"DataFrame must contain columns {required_cols}, but got {df.columns} instead."
+        expected_columns = ['question', 'answer', 'question_complexity']
+        assert all(col in df.columns for col in expected_columns), f"Columns {expected_columns} are required."
 
-        dataset = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
-
-        df_has_actual_answers = "answer" in df.columns
-        if df_has_actual_answers:
-            dataset["actual_answer"] = []
-            dataset["question_complexity"] = []
+        dataset = {"question": [],
+                   "answer": [],
+                   "contexts": [],
+                   "ground_truth": [],
+                   "actual_answer": [],
+                   "question_complexity": []}
 
         for _, item in tqdm(df.iterrows(), total=len(df), desc="Creating dataset"):
             question = item['question']
@@ -103,17 +102,14 @@ class RAGEvaluator:
             chain_result = self.chain.invoke(question)
             answer, contexts = chain_result['answer'], chain_result['context']
 
-            assert type(contexts) == list, f"Contexts must be a list, but got {type(contexts)} instead."
-            assert all(type(c) == Document for c in contexts), \
-                f"Contexts must be a list of Documents, but got {type(contexts[0])} instead."
-
+            # RAG pipeline results
             dataset['answer'] += [answer]
             dataset['contexts'] += [[str(c.page_content) for c in contexts]]
-            dataset['ground_truth'] += [item['relevant_chunk']]
 
-            if df_has_actual_answers:
-                dataset['actual_answer'] += [item['answer']]
-                dataset["question_complexity"] += [item["question_complexity"]]
+            # Ground truth from labeled data
+            dataset['ground_truth'] += [item['answer']]
+
+            dataset["question_complexity"] += [item["question_complexity"]]
 
         self.dataset = Dataset.from_dict(dataset)
         return self.dataset
