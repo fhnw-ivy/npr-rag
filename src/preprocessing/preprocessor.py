@@ -6,7 +6,7 @@ from langdetect import detect, LangDetectException
 
 class Preprocessor:
     def __init__(self, dataframe: pd.DataFrame, explode=True, verbose=False, concatenate_contents=False) -> None:
-        self.df = dataframe
+        self.df = dataframe.copy()
         self.explode = explode
         self.verbose = verbose
         self.concatenate_contents = concatenate_contents

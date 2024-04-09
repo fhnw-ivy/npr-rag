@@ -11,3 +11,4 @@ langdetect~=1.0.9
 fuzzywuzzy~=0.18.0
 arize-phoenix~=3.19.3
 sentence_transformers~=2.6.1
+seaborn
