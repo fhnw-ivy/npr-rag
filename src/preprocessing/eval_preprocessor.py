@@ -1,6 +1,6 @@
 import pandas as pd
+from fuzzywuzzy import fuzz
 from joblib import Parallel, delayed
-from difflib import SequenceMatcher
 
 
 class EvaluationSetPreprocessor:
@@ -12,17 +12,19 @@ class EvaluationSetPreprocessor:
     @staticmethod
     def compute_similarity(a, b):
         """Compute similarity score between two text strings using SequenceMatcher."""
-        return SequenceMatcher(None, a, b).ratio()
+        return fuzz.token_set_ratio(a, b)
 
     def _find_best_match(self, eval_chunk):
         """Find the best match in the default dataset for a given evaluation chunk."""
         best_match_score = 0
         best_match_index = None
-        for i, row in self.default_df.iterrows():
-            score = self.compute_similarity(eval_chunk, row['content'])
+        for i, doc in self.default_df.iterrows():
+            score = self.compute_similarity(eval_chunk, doc['content'])
+            if self.verbose:
+                print(f"Comparing with {doc['id']}: Score = {score}")
             if score > best_match_score:
                 best_match_score = score
-                best_match_index = row['id']
+                best_match_index = doc['id']
         return best_match_score, best_match_index
 
     def preprocess(self):
@@ -32,7 +34,7 @@ class EvaluationSetPreprocessor:
         try:
             self.df_eval['relevant_chunk'] = self.df_eval['relevant_chunk'].apply(eval).explode()
         except:
-            pass
+            print("Could not explode the DataFrame. Make sure the 'relevant_chunk' column is a list.")
 
         assert len_before == len(self.df_eval), "Expected the same number of rows after exploding the DataFrame."
 
