@@ -1,9 +1,10 @@
-import re
-import pandas as pd
 import ast
-import numpy as np
-from langdetect import detect, LangDetectException
 import hashlib
+import re
+
+import numpy as np
+import pandas as pd
+from langdetect import detect, LangDetectException
 
 
 def hash_string(s):
@@ -61,6 +62,8 @@ class Preprocessor:
 
     @staticmethod
     def _clean_html(text):
+        if type(text) == list:
+            text = ' '.join(text)
         cleanr = re.compile('<.*?>')
         cleantext = re.sub(cleanr, '', text)
         return cleantext
@@ -76,8 +79,6 @@ class Preprocessor:
         self.df['language'] = self.df['content'].apply(self._safe_detect)
         self.df['content'] = self.df['content'].apply(ast.literal_eval)
 
-        self._add_id()
-
         if self.explode:
             self.df = self.df.explode('content')
 
@@ -88,7 +89,6 @@ class Preprocessor:
 
         if not self.explode:
             self.df = self.df.groupby('Unnamed: 0').agg({'content': list,
-                                                         'id': 'first',
                                                          'language': 'first',
                                                          'title': 'first',
                                                          'date': 'first',
@@ -98,5 +98,7 @@ class Preprocessor:
 
         if self.concatenate_contents:
             self._concatenate_contents()
+
+        self._add_id()
 
         return self.df
