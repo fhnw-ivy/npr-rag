@@ -25,7 +25,8 @@ class VectorStore:
             self.client = chromadb.HttpClient(host=host, port=port)
 
         if collection is None:
-            collection = embedding_function.__class__.__name__
+            assert os.getenv('CHROMADB_COLLECTION') is not None, "No collection provided and no default collection set."
+            collection = os.getenv('CHROMADB_COLLECTION')
 
         self.vector_store = Chroma(client=self.client,
                                    collection_name=collection,
