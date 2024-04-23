@@ -4,6 +4,7 @@ import seaborn as sns
 from datasets import Dataset
 from langchain.chains import LLMChain
 from langchain.evaluation import load_evaluator, EvaluatorType
+from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models import LLM
 from matplotlib import pyplot as plt
