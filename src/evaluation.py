@@ -1,3 +1,5 @@
+import os
+
 import nest_asyncio
 import pandas as pd
 import seaborn as sns
@@ -12,9 +14,6 @@ from ragas import evaluate, RunConfig
 from ragas.metrics import (
     answer_correctness,
     context_precision,
-    context_recall,
-    context_relevancy,
-    faithfulness,
     answer_relevancy,
     answer_similarity,
     context_entity_recall,
@@ -39,51 +38,37 @@ def create_dataset(question: str, answer: str, contexts: list[str], ground_truth
 
 class RAGEvaluator:
     def __init__(self,
+                 name: str,
                  chain: LLMChain,
                  embeddings: Embeddings,
                  llm_model: LLM,
                  dataset: Dataset = None):
-        """
-        Initializes the RAG evaluator with the specified chain, metrics, embeddings, and LLM model.
-        :param chain: The chain to use for generating answers and contexts.
-        :param embeddings: Embeddings to use for evaluation.
-        :param llm_model: The LLM model to use.
-        :param dataset: The ragas dataset to use for evaluation. When None, the dataset must be set explicitly before evaluation.
-        """
         nest_asyncio.apply()
 
         self.metrics = [
-            faithfulness,
             answer_correctness,
-
-            context_precision,
-            context_recall,
-            context_relevancy,
-            context_entity_recall,
-
             answer_relevancy,
             answer_similarity,
+
+            context_precision,
+            context_entity_recall,
 
             conciseness,
             coherence,
             correctness
         ]
 
+        self.name = name
         self.dataset = dataset
         self.chain = chain
         self.embeddings = embeddings
         self.llm_model = llm_model
 
         self.eval_results = None
+        self.load_results()
 
-    def create_dataset_from_df(self, df) -> Dataset:
-        """
-        Creates a dataset from the provided DataFrame.
-        :param df: A DataFrame with questions and relevant chunks for evaluation.
-        :return: A dataset for evaluation.
-        """
+    def _create_dataset_from_df(self, df) -> Dataset:
         if self.dataset is not None:
-            print("Dataset already set. Explicitly set the property to overwrite it.")
             return self.dataset
 
         expected_columns = ['question', 'answer', 'question_complexity']
@@ -101,6 +86,7 @@ class RAGEvaluator:
             dataset['question'] += [question]
 
             chain_result = self.chain.invoke(question)
+            print(type(chain_result['context']))
             answer, contexts = chain_result['answer'], chain_result['context']
 
             # RAG pipeline results
@@ -123,20 +109,12 @@ class RAGEvaluator:
                  max_retries=10,
                  max_wait=60,
                  max_workers=16) -> pd.DataFrame:
-        """
-        Evaluates the RAG pipeline using the specified dataset and metrics.
-        :return: Evaluation results.
-        """
-        assert self.metrics is not None, "Metrics must be set before evaluation."
+
+        if self.eval_results is not None:
+            return self.eval_results
 
         if self.dataset is None and eval_df is not None:
-            try:
-                self.create_dataset_from_df(eval_df)
-            except Exception as e:
-                raise ValueError(f"Failed to create dataset from DataFrame: {e}")
-        elif eval_df is None and self.dataset is None:
-            raise ValueError(
-                "Dataset must be set before evaluation. Set the dataset explicitly or set create_dataset to True.")
+            self._create_dataset_from_df(eval_df)
 
         run_config = RunConfig(
             timeout=timeout,
@@ -164,6 +142,7 @@ class RAGEvaluator:
             eval_results_df.at[i, 'reasoning'] = reasoning
 
         self.eval_results = eval_results_df
+        self.save_results()
         return eval_results_df
 
     def reason(self, question: str, answer: str, retrieved_context: str):
@@ -173,11 +152,6 @@ class RAGEvaluator:
                                           reference=retrieved_context)
 
     def summarize_metrics(self):
-        """
-        Summarizes the metrics data for the Retriever Augmented Generation Pipeline.
-        Returns:
-            A summary plot of the metrics.
-        """
         metrics_data = self.eval_results.iloc[:, 5:]
         plt.figure(figsize=(10, 6))
         sns.barplot(data=metrics_data)
@@ -186,3 +160,29 @@ class RAGEvaluator:
         plt.ylabel('Score')
         plt.tight_layout()
         plt.show()
+
+    def _get_persistence_path(self):
+        clean_name = self.name.replace(" ", "_").lower()
+        return f"./tmp/evaluation_results_{clean_name}.csv"
+
+    def save_results(self):
+        if self.eval_results is None:
+            raise ValueError("Evaluation results must be set before saving.")
+
+        os.makedirs("./tmp", exist_ok=True)
+
+        self.eval_results.to_csv(self._get_persistence_path(), index=False)
+        return self._get_persistence_path()
+
+    def load_results(self, overwrite=False):
+        if self.eval_results is not None and not overwrite:
+            print("Evaluation results already set. Explicitly set the property to overwrite it.")
+
+        if not os.path.exists(self._get_persistence_path()):
+            return None
+
+        self.eval_results = pd.read_csv(self._get_persistence_path())
+        return self.eval_results
+
+    def __repr__(self):
+        return f"RAGEvaluator(name={self.name}, metrics={self.metrics})"
