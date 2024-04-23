@@ -1,6 +1,5 @@
-import os
-
 import chromadb
+import numpy as np
 from dotenv import load_dotenv
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.documents.base import Document
@@ -10,17 +9,18 @@ from tqdm import tqdm
 
 load_dotenv()
 
+CHROMADB_PERSISTENT_PATH = 'chroma'
+
 
 class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
-                 collection: str = None):
+                 collection: str,
+                 persistent_path: str = CHROMADB_PERSISTENT_PATH):
 
-        self.client = chromadb.PersistentClient(path='chromadb')
-
-        if collection is None:
-            assert os.getenv('CHROMADB_COLLECTION') is not None, "No collection provided and no default collection set."
-            collection = os.getenv('CHROMADB_COLLECTION')
+        self.client = chromadb.PersistentClient(path=persistent_path)
+        self.embedding_function = embedding_function
+        self.collection = collection
 
         self.vector_store = Chroma(client=self.client,
                                    collection_name=collection,
@@ -42,15 +42,21 @@ class VectorStore:
         """Retrieve a VectorStoreRetriever from the Chroma vector store."""
         return self.vector_store.as_retriever()
 
-    def add_documents(self, docs: list[Document], batch_size=41666, verbose: bool = False):
+    def add_documents(self, docs: list[Document], batch_size=41666, verbose: bool = False, overwrite: bool = False):
         """Add a list of documents to the vector store."""
-        batch_size = min(batch_size, 41666)
+        if self.collection_exists() and not overwrite:
+            print(f"Collection {self.collection} already exists in the vector store.")
+            return
 
-        # TODO: Check if this embeds documents twice when total size is not a multiple of batch_size
+        batch_size = min(batch_size, 41666)
         batches = [docs[i:i + batch_size] for i in range(0, len(docs), batch_size)]
 
-        for batch in tqdm(batches):
-            self.vector_store.add_documents(documents=batch, verbose=verbose)
+        if verbose:
+            for batch in tqdm(batches):
+                self.vector_store.add_documents(documents=batch, verbose=verbose)
+        else:
+            for batch in batches:
+                self.vector_store.add_documents(documents=batch, verbose=verbose)
 
     def similarity_search(self, query: str) -> list[Document]:
         """Perform a similarity search in the vector store with a given query."""
@@ -60,7 +66,10 @@ class VectorStore:
         """Perform a similarity search in the vector store with a given query."""
         return self.vector_store.similarity_search_with_score(query)
 
+    def collection_exists(self) -> bool:
+        """Check if the collection exists in the vector store."""
+        return np.any([collection.name == self.collection for collection in self.client.list_collections()])
+
     def __repr__(self) -> str:
-        return f"VectorStore(embedding_function={self.vector_store.embedding_function.__class__.__name__}, " \
-               f"collection={self.vector_store.collection_name}, " \
-               f"host={self.client.host}, port={self.client.port})"
+        return f"VectorStore(embedding_function={self.embedding_function.__class__.__name__}, " \
+               f"collection={self.collection})"

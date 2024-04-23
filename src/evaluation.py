@@ -67,9 +67,8 @@ class RAGEvaluator:
         self.eval_results = None
         self.load_results()
 
-    def create_dataset_from_df(self, df) -> Dataset:
+    def _create_dataset_from_df(self, df) -> Dataset:
         if self.dataset is not None:
-            print("Dataset already set. Explicitly set the property to overwrite it.")
             return self.dataset
 
         required_cols = ["question", "relevant_chunk"]
@@ -114,17 +113,12 @@ class RAGEvaluator:
                  max_retries=10,
                  max_wait=60,
                  max_workers=16) -> pd.DataFrame:
+
         if self.eval_results is not None:
             return self.eval_results
 
         if self.dataset is None and eval_df is not None:
-            try:
-                self.create_dataset_from_df(eval_df)
-            except Exception as e:
-                raise ValueError(f"Failed to create dataset from DataFrame: {e}")
-        elif eval_df is None and self.dataset is None:
-            raise ValueError(
-                "Dataset must be set before evaluation. Set the dataset explicitly or set create_dataset to True.")
+            self._create_dataset_from_df(eval_df)
 
         run_config = RunConfig(
             timeout=timeout,
@@ -193,3 +187,6 @@ class RAGEvaluator:
 
         self.eval_results = pd.read_csv(self._get_persistence_path())
         return self.eval_results
+
+    def __repr__(self):
+        return f"RAGEvaluator(name={self.name}, metrics={self.metrics})"
