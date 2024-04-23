@@ -13,11 +13,9 @@ def hash_string(s):
 
 
 class Preprocessor:
-    def __init__(self, dataframe: pd.DataFrame, explode=True, verbose=False, concatenate_contents=False) -> None:
+    def __init__(self, dataframe: pd.DataFrame, verbose=False) -> None:
         self.df = dataframe.copy()
-        self.explode = explode
         self.verbose = verbose
-        self.concatenate_contents = concatenate_contents
 
         for col in ['content', 'title', 'date', 'author', 'domain', 'url']:
             assert col in self.df.columns, f'Column {col} not found in dataframe'
@@ -79,26 +77,18 @@ class Preprocessor:
         self.df['language'] = self.df['content'].apply(self._safe_detect)
         self.df['content'] = self.df['content'].apply(ast.literal_eval)
 
-        if self.explode:
-            self.df = self.df.explode('content')
-
         self._remove_language()
         self._remove_html()
         self._remove_special_chars()
         self._remove_duplicate_chunks()
 
-        if not self.explode:
-            self.df = self.df.groupby('Unnamed: 0').agg({'content': list,
-                                                         'language': 'first',
-                                                         'title': 'first',
-                                                         'date': 'first',
-                                                         'author': 'first',
-                                                         'domain': 'first',
-                                                         'url': 'first'}).reset_index()
-
-        if self.concatenate_contents:
-            self._concatenate_contents()
-
+        self.df = self.df.groupby('Unnamed: 0').agg({'content': list,
+                                                     'language': 'first',
+                                                     'title': 'first',
+                                                     'date': 'first',
+                                                     'author': 'first',
+                                                     'domain': 'first',
+                                                     'url': 'first'}).reset_index()
+        self._concatenate_contents()
         self._add_id()
-
         return self.df
