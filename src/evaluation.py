@@ -179,6 +179,8 @@ class RAGEvaluator:
         if self.eval_results is None:
             raise ValueError("Evaluation results must be set before saving.")
 
+        os.makedirs("./tmp", exist_ok=True)
+
         self.eval_results.to_csv(self._get_persistence_path(), index=False)
         return self._get_persistence_path()
 
