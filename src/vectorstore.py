@@ -14,15 +14,9 @@ load_dotenv()
 class VectorStore:
     def __init__(self,
                  embedding_function: Embeddings,
-                 collection: str = None,
-                 host: str = os.getenv('CHROMADB_HOST'),
-                 port: int = os.getenv('CHROMADB_PORT')):
+                 collection: str = None):
 
-        if host is None or port is None:
-            print("Warning: No host or port provided. Using local ChromaDB client. Data will not be persisted.")
-            self.client = chromadb.Client()
-        else:
-            self.client = chromadb.HttpClient(host=host, port=port)
+        self.client = chromadb.PersistentClient(path='chromadb')
 
         if collection is None:
             assert os.getenv('CHROMADB_COLLECTION') is not None, "No collection provided and no default collection set."
