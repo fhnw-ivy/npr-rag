@@ -185,3 +185,4 @@ tmp/
 
 chroma/*
 !chroma/chroma.sqlite3
+cache/
