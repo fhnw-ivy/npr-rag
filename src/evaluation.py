@@ -180,8 +180,6 @@ class Evaluator:
         if self.dataset is None:
             self.dataset = self.dataset_creator.create_dataset_from_df(df_eval, verbose=verbose)
 
-        print(len(df_eval), len(self.dataset))
-
         if ragas_run_config is None:
             ragas_run_config = self._get_default_ragas_run_config()
 
