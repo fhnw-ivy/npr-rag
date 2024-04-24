@@ -44,7 +44,7 @@ class VectorStore:
 
     def add_documents(self, docs: list[Document], batch_size=41666, verbose: bool = False, overwrite: bool = False):
         """Add a list of documents to the vector store."""
-        if self.collection_exists() and not overwrite:
+        if not self.collection_is_empty() and not overwrite:
             print(f"Collection {self.collection} already exists in the vector store.")
             return
 
@@ -68,7 +68,12 @@ class VectorStore:
 
     def collection_exists(self) -> bool:
         """Check if the collection exists in the vector store."""
+        print(self.client.list_collections())
         return np.any([collection.name == self.collection for collection in self.client.list_collections()])
+
+    def collection_is_empty(self) -> bool:
+        """Check if the collection is empty in the vector store."""
+        return self.client.get_collection(self.collection).count() == 0
 
     def __repr__(self) -> str:
         return f"VectorStore(embedding_function={self.embedding_function.__class__.__name__}, " \
