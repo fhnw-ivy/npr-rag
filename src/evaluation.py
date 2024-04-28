@@ -31,7 +31,7 @@ class DatasetCreator:
         Raises:
             ValueError: If any expected columns are missing in the DataFrame.
         """
-        expected_columns = ['question', 'answer', 'question_complexity']
+        expected_columns = ['question', 'ground_truth', 'best_match_id']
         if not all(col in df.columns for col in expected_columns):
             raise ValueError(f"Expected columns {expected_columns} not found in DataFrame.")
 
@@ -45,22 +45,30 @@ class DatasetCreator:
         Returns:
             dict: A dictionary representing the dataset.
         """
-        # Meaning of columns taken from: https://cobusgreyling.medium.com/rag-evaluation-9813a931b3d4
-        dataset = {"question": [],  # The question posed
-                   "answer": [],  # The generated answer from the RAG pipeline
-                   "contexts": [],  # The retrieved contexts from the RAG pipeline
-                   "ground_truth": [],  # The ground truth answer from the labeled data
-                   "actual_answer": [],  # The actual answer from the labeled data (not used in eval but for reference)
-                   "question_complexity": [],  # The complexity of the question (from RAGAS dataset generation)
-                   "contexts_origin_doc_ids": [],  # The origin document IDs of the retrieved contexts
-                   "best_match_id": []  # The best match ID from the default dataset
-                   }
+        # Meaning of RAGS columns taken from: https://towardsdatascience.com/evaluating-rag-applications-with-ragas-81d67b0ee31a#c52f
+        dataset = {
+            # RAGAS columns
+            "question": [],  # The question posed
+            "answer": [],  # The generated answer from the RAG pipeline
+            "contexts": [],  # The retrieved contexts from the RAG pipeline
+            "ground_truth": [],  # The ground truth answer from the labeled data
 
+            # Mean Reciprocal Rank (MRR) columns
+            "contexts_origin_doc_ids": [],  # The origin document IDs of the retrieved contexts
+            "best_match_id": [],  # The best match ID from the default dataset
+
+            # Additional columns
+            "question_complexity": [],  # The complexity of the question (from RAGAS dataset generation)
+        }
+        
         dataset['question'] = df['question'].tolist()
-        dataset['ground_truth'] = df['answer'].tolist()
-        dataset['actual_answer'] = df['answer'].tolist()
-        dataset['question_complexity'] = df['question_complexity'].tolist()
+        dataset['ground_truth'] = df['ground_truth'].tolist()
         dataset['best_match_id'] = df['best_match_id'].tolist()
+
+        if 'question_complexity' not in df.columns:
+            dataset['question_complexity'] = [None] * len(df)
+        else:
+            dataset['question_complexity'] = df['question_complexity'].tolist()
         return dataset
 
     def apply_rag_chain(self, question):

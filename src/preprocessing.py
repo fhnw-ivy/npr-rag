@@ -137,4 +137,11 @@ class EvaluationPreprocessor:
         )
 
         self.df_eval['best_match_score'], self.df_eval['best_match_id'] = zip(*results)
+
+        if 'relevant_chunk' in self.df_eval.columns:
+            self.df_eval.rename(columns={'relevant_chunk': 'ground_truth'}, inplace=True)
+
+        if 'answer' in self.df_eval.columns:
+            self.df_eval.rename(columns={'answer': 'ground_truth'}, inplace=True)
+
         return self.df_eval
