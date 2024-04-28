@@ -183,6 +183,6 @@ cython_debug/
 
 tmp/
 
-chroma/*
-!chroma/chroma.sqlite3
 cache/
+
+chroma/
