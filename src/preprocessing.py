@@ -122,26 +122,29 @@ class EvaluationPreprocessor:
 
     def preprocess(self):
         """Process the evaluation DataFrame to find the best text matches in parallel."""
-        self.df_eval = self.df_eval.drop_duplicates()
+        df_eval = self.df_eval.drop_duplicates().copy()
 
-        len_before = len(self.df_eval)
+        len_before = len(df_eval)
         try:
-            self.df_eval['relevant_chunk'] = self.df_eval['relevant_chunk'].apply(eval).explode()
+            df_eval['relevant_chunk'] = df_eval['relevant_chunk'].apply(eval).explode()
         except:
             print("Could not explode the DataFrame. Make sure the 'relevant_chunk' column is a list.")
 
-        assert len_before == len(self.df_eval), "Expected the same number of rows after exploding the DataFrame."
+        assert len_before == len(df_eval), "Expected the same number of rows after exploding the DataFrame."
 
         results = Parallel(n_jobs=-1, verbose=10)(
-            delayed(self._find_best_match)(chunk) for chunk in self.df_eval['relevant_chunk']
+            delayed(self._find_best_match)(chunk) for chunk in df_eval['relevant_chunk']
         )
 
-        self.df_eval['best_match_score'], self.df_eval['best_match_id'] = zip(*results)
+        scores, match_ids = zip(*results)
+        df_eval.loc[:, 'best_match_score'] = scores
+        df_eval.loc[:, 'best_match_id'] = match_ids
 
-        if 'relevant_chunk' in self.df_eval.columns:
-            self.df_eval.rename(columns={'relevant_chunk': 'ground_truth'}, inplace=True)
+        if 'answer' in df_eval.columns:
+            print("Renaming 'answer' to 'ground_truth'.")
+            df_eval.rename(columns={'answer': 'ground_truth'}, inplace=True)
+        elif 'relevant_chunk' in df_eval.columns:
+            print("Renaming 'relevant_chunk' to 'ground_truth'.")
+            df_eval.rename(columns={'relevant_chunk': 'ground_truth'}, inplace=True)
 
-        if 'answer' in self.df_eval.columns:
-            self.df_eval.rename(columns={'answer': 'ground_truth'}, inplace=True)
-
-        return self.df_eval
+        return df_eval

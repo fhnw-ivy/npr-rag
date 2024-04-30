@@ -60,7 +60,7 @@ class DatasetCreator:
             # Additional columns
             "question_complexity": [],  # The complexity of the question (from RAGAS dataset generation)
         }
-        
+
         dataset['question'] = df['question'].tolist()
         dataset['ground_truth'] = df['ground_truth'].tolist()
         dataset['best_match_id'] = df['best_match_id'].tolist()
