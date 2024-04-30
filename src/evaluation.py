@@ -258,9 +258,9 @@ class Evaluator:
 
         return eval_df
 
-    def summarize(self):
+    def plot_summary(self):
         """
-        Summarize the evaluation results in plots and print the overall Mean Reciprocal Rank (MRR).
+        Summarize the evaluation results in plots
 
         Returns:
             None
@@ -288,7 +288,7 @@ class Evaluator:
         plt.show()
 
         means = ragas_metrics_data.mean()
-        # stds = ragas_metrics_data.std() # TODO: Add standard deviation to the plot
+        # stds = ragas_metrics_data.std() # TODO: Add standard deviations to the plot
 
         plt.figure(figsize=(12, 6))
         sns.barplot(x=means.index, y=means, palette="Set2")
@@ -300,5 +300,18 @@ class Evaluator:
         plt.tight_layout()
         plt.show()
 
-        mrr_overall = self.eval_results['rr'].mean()
-        print(f"Overall Mean Reciprocal Rank (MRR): {mrr_overall:.3f}")
+    def get_summary(self):
+        """
+        Summarize the evaluation results in a DataFrame.
+
+        Returns:
+            pd.DataFrame: A DataFrame containing the summary of evaluation results.
+        """
+        if self.eval_results is None:
+            raise ValueError("No evaluation results found. Run the evaluation first.")
+
+        # return self.eval_results.select_dtypes(include=[np.float64]).mean()
+        # calc mean and std for each metric and return as a dataframe
+        means = self.eval_results.select_dtypes(include=[np.float64]).mean()
+        stds = self.eval_results.select_dtypes(include=[np.float64]).std()
+        return pd.DataFrame({'mean': means, 'std': stds})
