@@ -22,7 +22,6 @@ def get_llm_model(model: LLMModel = LLMModel.GPT_3_AZURE, temperature=0.7):
                           max_retries=MAX_RETRIES,
                           temperature=temperature)
 
-
     if model == LLMModel.GPT_3_AZURE:
         openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")
         return AzureChatOpenAI(
