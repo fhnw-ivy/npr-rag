@@ -202,6 +202,7 @@ class Evaluator:
         eval_results = eval_results.to_pandas()
         eval_results = self.add_reasoning(eval_results, verbose=verbose)
         eval_results = self.add_reciprocal_rank(eval_results, verbose=verbose)
+        eval_results = self.add_hit_at_k(eval_results, k=2, verbose=verbose)
 
         self.eval_results = eval_results
 
@@ -255,6 +256,32 @@ class Evaluator:
                 rr = 0
 
             eval_df.at[i, 'rr'] = rr
+
+        return eval_df
+
+    def add_hit_at_k(self, eval_df, k=2, verbose=True):
+        """
+        Compute the Hit@K for the evaluation DataFrame.
+
+        Args:
+            eval_df (pd.DataFrame): The DataFrame containing the evaluation results.
+            k (int): The value of K for Hit@K. Default is 2.
+            verbose (bool): Whether to print verbose logs. Default is True.
+
+        Returns:
+            pd.DataFrame: The evaluation DataFrame augmented with the Hit@K values.
+        """
+        for i, row in tqdm(eval_df.iterrows(), desc=f"Computing Hit@{k}", disable=not verbose, total=len(eval_df)):
+            retrieved_docs = row['contexts_origin_doc_ids']
+            ground_truth_origin_doc_ids = row['best_match_id']
+
+            indices = np.where(retrieved_docs == ground_truth_origin_doc_ids)[0]
+            if indices.size > 0:
+                hit_at_k = 1 if indices[0] < k else 0
+            else:
+                hit_at_k = 0
+
+            eval_df.at[i, f'hit@{k}'] = hit_at_k
 
         return eval_df
 
