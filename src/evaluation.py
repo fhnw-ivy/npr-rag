@@ -274,14 +274,10 @@ class Evaluator:
                               .select_dtypes(include=[np.float64])
                               .drop('rr', axis=1))
 
-        normalized_ragas_metrics_data = (
-                (ragas_metrics_data - ragas_metrics_data.min()) /
-                (ragas_metrics_data.max() - ragas_metrics_data.min()))
-
         plt.figure(figsize=(12, 6))
-        sns.boxplot(data=normalized_ragas_metrics_data, palette="Set2")
-        plt.title('Comparison of All Normalized RAGAS Evaluation Metrics')
-        plt.ylabel('Scores (Normalized)')
+        sns.boxplot(data=ragas_metrics_data, palette="Set2")
+        plt.title(f'{self.name}: Boxplots of RAGAS Evaluation Metrics')
+        plt.ylabel('Scores')
         plt.xlabel('Metrics')
         plt.xticks(rotation=45)
         plt.tight_layout()
@@ -292,7 +288,7 @@ class Evaluator:
 
         plt.figure(figsize=(12, 6))
         sns.barplot(x=means.index, y=means, palette="Set2")
-        plt.title('Mean of RAGAS Evaluation Metrics')
+        plt.title(f'{self.name}: Mean Scores of RAGAS Evaluation Metrics')
         plt.ylabel('Mean Scores')
         plt.xlabel('Metrics')
         plt.xticks(rotation=45)
