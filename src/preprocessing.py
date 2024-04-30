@@ -10,11 +10,31 @@ from langdetect import detect, LangDetectException
 
 
 def hash_string(s):
+    """
+    Generate an SHA-256 hash for a given string after converting it to lowercase and stripping whitespace.
+
+    Args:
+    s (str): The string to hash.
+
+    Returns:
+    int: A numerical hash derived from the SHA-256 hash.
+    """
     s = str(s).lower().strip()
     return int(hashlib.sha256(s.encode('utf-8')).hexdigest(), 16) % 10 ** 8
 
 
 class Preprocessor:
+    """
+    A class for preprocessing a pandas DataFrame to prepare text data for chunking and vector store indexing.
+
+    This class handles operations such as removing duplicates, filtering by language, cleaning HTML,
+    removing special characters, and concatenating text chunks.
+
+    Attributes:
+    df (pd.DataFrame): The dataframe to preprocess.
+    verbose (bool): Optional; if True, the class will print information about the preprocessing steps.
+    """
+
     def __init__(self, dataframe: pd.DataFrame, verbose=False) -> None:
         self.df = dataframe.copy()
         self.verbose = verbose
@@ -23,12 +43,18 @@ class Preprocessor:
             assert col in self.df.columns, f'Column {col} not found in dataframe'
 
     def _add_id(self):
+        """
+        Adds a unique ID to each row in the dataframe by applying a hash function to the 'content' column.
+        """
         self.df['id'] = self.df['content'].apply(lambda x: hash_string(x))
 
         if self.verbose:
             print(f'Added unique id to each chunk. Duplicate ids: {self.df["id"].duplicated().sum()}')
 
     def _remove_duplicate_chunks(self):
+        """
+        Removes duplicate rows from the dataframe based on the 'content' column.
+        """
         n_rows = self.df.shape[0]
         self.df = self.df.drop_duplicates(subset=['content'], keep='first')
 
@@ -36,6 +62,9 @@ class Preprocessor:
             print(f'Dropped {n_rows - len(self.df)} duplicate chunks')
 
     def _remove_language(self):
+        """
+        Filters out rows where the language detected is not English.
+        """
         n_rows = self.df.shape[0]
         non_en_rows = self.df['language'] != 'en'
 
@@ -55,9 +84,16 @@ class Preprocessor:
             return np.nan
 
     def _remove_html(self):
+        """
+        Cleans HTML tags from the 'content' column of the dataframe.
+        """
         self.df['content'] = self.df['content'].apply(self._clean_html)
 
     def _remove_special_chars(self):
+        """
+        Removes special characters from the 'content' column of the dataframe, retaining only alphanumeric characters
+        and some punctuation.
+        """
         self.df['content'] = self.df['content'].apply(self.clean_special_chars)
 
     @staticmethod
@@ -70,12 +106,21 @@ class Preprocessor:
 
     @staticmethod
     def clean_special_chars(text):
-        return re.sub(r'[^a-zA-Z0-9,.?!\s]', '', text)
+        return re.sub(r'[^a-zA-Z0-9\s]', '', text)
 
     def _concatenate_contents(self):
+        """
+        Concatenates lists of strings in the 'content' column into single string entries.
+        """
         self.df['content'] = self.df['content'].apply(lambda x: ' '.join(x))
 
     def preprocess(self) -> pd.DataFrame:
+        """
+        Executes all preprocessing steps and returns the processed DataFrame.
+
+        Returns:
+        pd.DataFrame: The preprocessed dataframe.
+        """
         self.df['language'] = self.df['content'].apply(self._safe_detect)
         self.df['content'] = self.df['content'].apply(ast.literal_eval)
 
@@ -97,6 +142,17 @@ class Preprocessor:
 
 
 class EvaluationPreprocessor:
+    """
+    A class for preprocessing evaluation datasets by finding the best text matches from the entire dataset using
+    fuzzy matching. This is mainly done for evaluation purposes to evaluate if the retrieved text chunks are indeed
+    the one expected from the labeled dataset.
+
+    Attributes:
+    default_df (pd.DataFrame): The default dataset to compare against.
+    df_eval (pd.DataFrame): The evaluation dataset to preprocess.
+    verbose (bool): Optional; if True, the class will print information about the matching process.
+    """
+
     def __init__(self, default_df: pd.DataFrame, df_eval: pd.DataFrame, verbose: bool = False):
         self.default_df = default_df
         self.df_eval = df_eval
@@ -108,7 +164,15 @@ class EvaluationPreprocessor:
         return fuzz.token_set_ratio(a, b)
 
     def _find_best_match(self, eval_chunk):
-        """Find the best match in the default dataset for a given evaluation chunk."""
+        """
+        Finds the best match for a given text chunk from the default dataset.
+
+        Args:
+        eval_chunk (str): The text chunk from the evaluation dataset to find a match for.
+
+        Returns:
+        tuple: A tuple containing the best match score and the index of the best match.
+        """
         best_match_score = 0
         best_match_index = None
         for i, doc in self.default_df.iterrows():
@@ -121,7 +185,12 @@ class EvaluationPreprocessor:
         return best_match_score, best_match_index
 
     def preprocess(self):
-        """Process the evaluation DataFrame to find the best text matches in parallel."""
+        """
+        Processes the evaluation DataFrame to identify the best matches for text chunks. It handles data cleaning and utilizes parallel processing to speed up the matching.
+
+        Returns:
+        pd.DataFrame: The processed evaluation DataFrame with match scores and match indices added.
+        """
         df_eval = self.df_eval.drop_duplicates().copy()
 
         len_before = len(df_eval)
