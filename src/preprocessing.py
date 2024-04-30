@@ -70,7 +70,7 @@ class Preprocessor:
 
     @staticmethod
     def clean_special_chars(text):
-        return re.sub(r'[^a-zA-Z0-9\s]', '', text)
+        return re.sub(r'[^a-zA-Z0-9,.?!\s]', '', text)
 
     def _concatenate_contents(self):
         self.df['content'] = self.df['content'].apply(lambda x: ' '.join(x))
