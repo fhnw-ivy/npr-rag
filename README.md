@@ -20,7 +20,7 @@ npr-rag/
 
 ### Requirements
 
-- **Docker**: Install from [Docker Hub](https://hub.docker.com/).
+- **Docker**: Install from [here]([https://hub.docker.com/](https://www.docker.com/products/docker-desktop/)).
 - **Docker Compose**: Install from [Docker Compose Installation Guide](https://docs.docker.com/compose/install/).
 
 ### Using Docker Compose (Recommended)
