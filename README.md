@@ -15,3 +15,32 @@ npr-rag/
     ...
 ...
 ```
+
+## Docker Setup
+
+### Requirements
+
+- **Docker**: Install from [Docker Hub](https://hub.docker.com/).
+- **Docker Compose**: Install from [Docker Compose Installation Guide](https://docs.docker.com/compose/install/).
+
+### Using Docker Compose (Recommended)
+
+1. **Start the JupyterLab server**:
+    ```bash
+    docker-compose up
+    ```
+   Access the server at `http://localhost:8888`. The project directory is mounted within the container for real-time
+   file synchronization.
+
+### Alternative Method: Using Dockerfile Directly
+
+1. **Build the Docker image**:
+    ```bash
+    docker build -t npr-rag-jupyterlab .
+    ```
+
+2. **Run the Docker container**:
+    ```bash
+    docker run -p 8888:8888 -v "$(pwd):/usr/src/app" npr-rag-jupyterlab
+    ```
+   Navigate to `http://localhost:8888` in your web browser.
