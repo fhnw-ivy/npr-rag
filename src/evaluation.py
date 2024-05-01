@@ -298,11 +298,13 @@ class Evaluator:
         sns.set(style="whitegrid")
 
         ragas_metrics_data = (self.eval_results
-                              .select_dtypes(include=[np.float64])
-                              .drop('rr', axis=1))
+                              .select_dtypes(include=[np.float64]))
+
+        exclude_boxplot = ['hit@2', 'rr']
+        ragas_metrics_data_boxplot = ragas_metrics_data.drop(exclude_boxplot, axis=1)
 
         plt.figure(figsize=(12, 6))
-        sns.boxplot(data=ragas_metrics_data, palette="Set2")
+        sns.boxplot(data=ragas_metrics_data_boxplot, palette="Set2")
         plt.title(f'{self.name}: Boxplots of RAGAS Evaluation Metrics')
         plt.ylabel('Scores')
         plt.xlabel('Metrics')
