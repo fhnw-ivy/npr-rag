@@ -303,7 +303,7 @@ class Evaluator:
         exclude_boxplot = ['hit@2', 'rr']
         ragas_metrics_data_boxplot = ragas_metrics_data.drop(exclude_boxplot, axis=1)
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(14, 8))
         sns.boxplot(data=ragas_metrics_data_boxplot, palette="Set2")
         plt.title(f'{self.name}: Boxplots of RAGAS Evaluation Metrics')
         plt.ylabel('Scores')
@@ -315,7 +315,7 @@ class Evaluator:
         means = ragas_metrics_data.mean()
         # stds = ragas_metrics_data.std() # TODO: Add standard deviations to the plot
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(14, 8))
         sns.barplot(x=means.index, y=means, palette="Set2")
         plt.title(f'{self.name}: Mean Scores of RAGAS Evaluation Metrics')
         plt.ylabel('Mean Scores')
