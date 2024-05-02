@@ -12,6 +12,7 @@ from matplotlib import pyplot as plt
 from ragas import evaluate, RunConfig
 from ragas.metrics import (answer_correctness, context_precision, answer_relevancy, answer_similarity,
                            context_entity_recall)
+import re
 from tqdm.auto import tqdm
 
 nest_asyncio.apply()
@@ -154,8 +155,11 @@ class Evaluator:
         Returns:
             Path: File path for the cached result.
         """
+
         df_hash = pd.util.hash_pandas_object(df).sum()
-        file_name = f"{self.name}_{df_hash}.pkl"
+        name = re.sub(r'Experiment \d+: ', '', self.name)
+
+        file_name = f"{name}_{df_hash}.pkl"
         return self.cache_dir / file_name
 
     def evaluate(self,
