@@ -23,7 +23,7 @@ There are numerous processes under the hood that are used in the `main.ipynb`. T
 - **Vector Store**: The `VectorStore` class inside `/src/vector_store.py` wraps around the `Chroma` object, allowing for a structured way to control how the Vector Store can be accessed.
 
 ### Use of AI
-The excerpt on the usage of assistants like ChatGPT and GitHub CoPilot was written in `USE-OF-AI.md` in the root folder of the project.
+The excerpt on the usage of assistants like ChatGPT and GitHub CoPilot was written in [`USE-OF-AI.md`](USE-OF-AI.md) in the root folder of the project.
 
 ## Download ChromaDB SQLite database
 
