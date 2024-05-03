@@ -10,6 +10,7 @@
     * [Use of AI](#use-of-ai)
 * [Getting Started](#getting-started)
     * [Download pre-indexed ChromaDB SQLite database](#download-pre-indexed-chromadb-sqlite-database)
+    * [Configuration of Environment Variables](#configuration-of-environment-variables)
     * [Docker Setup](#docker-setup)
         * [Requirements](#requirements)
         * [Using Docker Compose (Recommended)](#using-docker-compose-recommended)
@@ -111,6 +112,30 @@ npr-rag/
     ...
 ...
 ```
+
+### Configuration of Environment Variables
+
+To configure access to the OpenAI API for the project, start by duplicating the `default.env` file and renaming it
+to `.env`. Once copied, you'll need to update the environment variables as per your API access details.
+
+**For OpenAI API Users**:
+
+- Locate the `OPENAI_API_KEY` variable in your `.env` file.
+- Replace the placeholder `...` with your actual OpenAI API key.
+- If you are not using Azure OpenAI, ensure this is the only API key line un-commented.
+
+**For Azure OpenAI API Users**:
+If you are using the Azure OpenAI API, follow these steps instead:
+
+- Comment out or remove the `OPENAI_API_KEY` line.
+- Fill in the `AZURE_OPENAI_API_KEY` with your Azure API key.
+- Update `AZURE_OPENAI_ENDPOINT` with your specific Azure endpoint URL.
+- Set the `AZURE_OPENAI_DEPLOYMENT` to your designated deployment ID.
+
+**Additional Settings**:
+
+- The `TOKENIZERS_PARALLELISM` variable should be set to `false` to avoid parallelism in tokenizers, which can lead to
+  better performance in certain environments.
 
 ### Docker Setup
 
