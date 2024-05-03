@@ -7609,7 +7609,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd55bfa8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad38ed5e71805690">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7636,6 +7636,10 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
 
 <span class="n">load_dotenv</span><span class="p">()</span>
@@ -7649,7 +7653,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=55c04269">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb6c3200a9a3cf8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7715,7 +7719,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=831b1462">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5dd5e195909e8361">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7770,7 +7774,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e1bf621">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb77f2b4e322dd00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7799,9 +7803,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">get_path</span><span class="p">()[</span><span class="s1">'df_path'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">get_path</span><span class="p">()[</span><span class="s1">'df_path'</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -7932,7 +7934,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=247042c0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db065d0f90d82f13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8082,7 +8084,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7664b84">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=63ad56817b128056">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8125,18 +8127,90 @@ a.anchor-link {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>modules.json:   0%|          | 0.00/349 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>config_sentence_transformers.json:   0%|          | 0.00/124 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>README.md:   0%|          | 0.00/90.8k [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>sentence_bert_config.json:   0%|          | 0.00/52.0 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
   warnings.warn(
 </pre>
 </div>
 </div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>config.json:   0%|          | 0.00/684 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>model.safetensors:   0%|          | 0.00/133M [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tokenizer_config.json:   0%|          | 0.00/366 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>vocab.txt:   0%|          | 0.00/232k [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tokenizer.json:   0%|          | 0.00/711k [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>special_tokens_map.json:   0%|          | 0.00/125 [00:00&lt;?, ?B/s]</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1_Pooling/config.json:   0%|          | 0.00/190 [00:00&lt;?, ?B/s]</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3345783">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1f2fd389407d71e8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8279,7 +8353,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2d51b1b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74b777425aa77a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8430,7 +8504,7 @@ a.anchor-link {
   Document(page_content='ConocoPhillips was the first US operator to unveil an emissions strategy aligned with the United Nations climate accord adding  we ve got a game plan and a pathway to get there and we think that s important for our industry and we need everybody to be doing that  The company in 2020 announced its intention to reduce operational GHG emissions intensity by 35 to 45 by 2030 a revision from the previous goal of 5 to 15 and to reach net zero emissions by 2050 The path to net zero will involve tools such as emissions offsets and carbon capture utilization and sequestration Lance said Within the ESG initiatives Lance and Sheffield also stressed the importance of curbing routine natural gas flaring which remains a stubborn challenge in the Permian despite progress made on reducing flaring intensity Other measures such as electrifying fracture fleets and better monitoring of methane leaks will be crucial as well they said Sheffield and Lance said they support the Biden administration s efforts', metadata={'date': '2021-03-05', 'domain': 'naturalgasintel', 'origin_doc_id': 17278332, 'title': 'ConocoPhillips, Pioneer Natural CEOs Preach Discipline as Permian Activity Rebounds', 'url': 'https://www.naturalgasintel.com/conocophillips-pioneer-natural-ceos-preach-discipline-as-permian-activity-rebounds/'}),
   Document(page_content='Qatar Petroleum  QP has launched a new sustainability strategy aiming to reduce the emissions intensity of its LNG facilities by 25 The company also aims to reduce emissions from its upstream facilities by at least 15 and cut flaring intensity in the upstream by more than 75 The Qatari NOC set 2013 as the baseline It intends to achieve the targets by 2030 QP is targeting an end to routine flaring by 2030 and limiting fugitive methane emissions It will accomplish this by setting a methane intensity target of 02 across all facilities by 2025 The company has spent  900 million between 2012 and 2018 on reducing flaring Another  170mn has been committed for investment from 2018 to 2021 QP has committed to using carbon capture and storage  CCS facilities to capture more than 7 million tonnes per year In December 2020 QP said it planned to sequester this amount of CO2 by 2027 The strategy is consistent with the Paris Agreement the company has said QP aims to add more than 4 GW of renewable', metadata={'date': '2021-01-13', 'domain': 'energyvoice', 'origin_doc_id': 32991764, 'title': 'QP launches carbon cut strategy - News for the Energy Sector', 'url': 'https://www.energyvoice.com//www.energyvoice.com/oilandgas/middle-east/lng-middle-east/291211/qp-emissions-lng-sustainability/'})],
  'question': 'Is the company aiming to reduce gas flaring?',
- 'answer': 'Yes, ExxonMobil is aiming to reduce gas flaring by more than 75% in its Permian operations by the end of this year and eliminate all routine flaring in the basin by the end of 2022. The company is also securing alternative natural gas delivery points across the basin to minimize non-routine flaring.'}</pre>
+ 'answer': 'Yes, the company is aiming to reduce gas flaring. By the end of this year, ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75% versus 2019 and to eliminate all routine flaring in the basin by the end of 2022. ConocoPhillips also stressed the importance of curbing routine natural gas flaring and Qatar Petroleum aims to end routine flaring by 2030.'}</pre>
 </div>
 </div>
 </div>
@@ -8468,7 +8542,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a13c71a9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3572339aa349c3d5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8700,7 +8774,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=725d047e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32373fe01197eae8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8755,7 +8829,7 @@ Answer: The top 3 states in the US in terms of total solar power generating capa
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. It includes measures to speed up the expansion of renewable energy and green technologies, upgrade the bloc's regulatory framework for quick deployment, secure access to critical raw materials, and speed up investment and financing for clean tech production in Europe. The plan is part of the EU's efforts to make its net zero industry more competitive and accelerate its transition to net zero.
+Answer: The EU's Green Deal Industrial Plan is a set of strategies aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. It aims to make the EU's net zero industry more competitive and to accelerate its transition to net zero by expanding renewable energy and green technologies and upgrading the bloc's regulatory framework for quick deployment. The plan also proposes tax exemptions, flexible aid, and the promotion of local manufacturing, among other key strategies. However, there is little mention of helping low-income countries with the challenges arising from the transition.
 
 
 </pre>
@@ -8945,13 +9019,24 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ec956b2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=149537b619aa8cf7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Helper-Functions"><a id="toc8_"></a><a href="#toc0_">Helper Functions</a><a class="anchor-link" href="#Helper-Functions">¶</a></h1><p>In order to make the notebook more readable and to avoid code duplication, we will define some helper functions that will be used throughout the notebook. These functions will help us to perform common tasks such as running experiments, evaluating pipelines, and visualizing the results.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26768cce">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The first helper will be used to combine evaluation results from multiple evaluators into a single DataFrame.</p>
 </div>
 </div>
 </div>
@@ -8964,25 +9049,13 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine_evaluator_results</span><span class="p">(</span><span class="n">evaluators</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Combine evaluation results from multiple evaluators into a single DataFrame.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">    evaluators (list of Evaluator): A list containing Evaluators.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">    pd.DataFrame: A combined DataFrame containing all evaluation results with evaluator names.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">    ValueError: If any evaluator's DataFrame is missing required columns or is None.</span>
-<span class="sd">    """</span>
     <span class="n">combined_data</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">evaluator</span> <span class="ow">in</span> <span class="n">evaluators</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">eval_results</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No evaluation results available for </span><span class="si">{</span><span class="n">evaluator</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
 
-        <span class="n">evaluator</span><span class="o">.</span><span class="n">eval_results</span><span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">]</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># Add a column for the evaluator's name</span>
+        <span class="n">evaluator</span><span class="o">.</span><span class="n">eval_results</span><span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">]</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">name</span>
         <span class="n">combined_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">eval_results</span><span class="p">)</span>
 
     <span class="n">final_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">combined_data</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -9003,63 +9076,14 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a3b2f59a7cf527ea">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bb9ae24f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-
-<span class="k">def</span> <span class="nf">plot_evaluation_comparative_results</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">use_median</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">err_bars</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">"whitegrid"</span><span class="p">)</span>
-
-    <span class="n">columns_to_plot_bar</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Answer Correctness'</span><span class="p">,</span> <span class="s1">'Answer Relevancy'</span><span class="p">,</span> <span class="s1">'Answer Similarity'</span><span class="p">,</span>
-                           <span class="s1">'Context Precision'</span><span class="p">,</span> <span class="s1">'Context Entity Recall'</span><span class="p">,</span> <span class="s1">'Reciprocal Rank'</span><span class="p">,</span> <span class="s1">'Hit@2'</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">use_median</span><span class="p">:</span>
-        <span class="n">agg_method</span> <span class="o">=</span> <span class="s1">'median'</span>
-        <span class="n">stats_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">columns_to_plot_bar</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">]]</span>
-                    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Evaluator'</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">'median'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">])</span>
-                    <span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">future_stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
-        <span class="n">value_col</span> <span class="o">=</span> <span class="s1">'median'</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">agg_method</span> <span class="o">=</span> <span class="s1">'mean'</span>
-        <span class="n">stats_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">columns_to_plot_bar</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">]]</span>
-                    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Evaluator'</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">])</span>
-                    <span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">future_stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                    <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
-        <span class="n">value_col</span> <span class="o">=</span> <span class="s1">'mean'</span>
-
-    <span class="n">stats_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">,</span> <span class="s1">'Metric'</span><span class="p">,</span> <span class="n">value_col</span><span class="p">,</span> <span class="s1">'STD'</span><span class="p">]</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-    <span class="n">bars</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Metric'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">value_col</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'Evaluator'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">stats_df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'Set2'</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">err_bars</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">bar</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bars</span><span class="o">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">[</span><span class="n">value_col</span><span class="p">],</span> <span class="n">stats_df</span><span class="p">[</span><span class="s1">'STD'</span><span class="p">]):</span>
-            <span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">val</span> <span class="o">-</span> <span class="n">std</span><span class="p">)</span>
-            <span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="n">std</span><span class="p">)</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span>
-                         <span class="n">yerr</span><span class="o">=</span><span class="p">[[</span><span class="n">val</span> <span class="o">-</span> <span class="n">lower_bound</span><span class="p">],</span> <span class="p">[</span><span class="n">upper_bound</span> <span class="o">-</span> <span class="n">val</span><span class="p">]],</span>
-                         <span class="n">fmt</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">agg_method</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> Scores of Evaluation Metrics (N/metric=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">agg_method</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> Score'</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Metrics'</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Evaluator Name'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The following <code>plot_evaluation_comparative_results</code> will help visualize the evaluation results of the different experiments. It will create comparative plots of the preceding experiments.</p>
 </div>
 </div>
 </div>
@@ -9068,24 +9092,18 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="k">def</span> <span class="nf">plot_evaluation_comparative_results</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">use_median</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">err_bars</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_evaluation_comparative_results</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">use_median</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">err_bars</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">"whitegrid"</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>  <span class="c1"># Adjust size for better visualization</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 
-    <span class="c1"># Define the metrics to be plotted</span>
     <span class="n">columns_to_plot_bar</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Answer Correctness'</span><span class="p">,</span> <span class="s1">'Answer Relevancy'</span><span class="p">,</span> <span class="s1">'Answer Similarity'</span><span class="p">,</span>
                            <span class="s1">'Context Precision'</span><span class="p">,</span> <span class="s1">'Context Entity Recall'</span><span class="p">,</span> <span class="s1">'Reciprocal Rank'</span><span class="p">,</span> <span class="s1">'Hit@2'</span><span class="p">]</span>
     <span class="n">columns_to_plot_box</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Answer Correctness'</span><span class="p">,</span> <span class="s1">'Answer Relevancy'</span><span class="p">,</span> <span class="s1">'Answer Similarity'</span><span class="p">,</span>
-                           <span class="s1">'Context Precision'</span><span class="p">,</span> <span class="s1">'Context Entity Recall'</span><span class="p">]</span>  <span class="c1"># Exclude 'Reciprocal Rank' and 'Hit@2'</span>
+                           <span class="s1">'Context Precision'</span><span class="p">,</span> <span class="s1">'Context Entity Recall'</span><span class="p">]</span>
 
-    <span class="c1"># Aggregate data for bar plot using mean or median</span>
     <span class="k">if</span> <span class="n">use_median</span><span class="p">:</span>
         <span class="n">agg_func</span> <span class="o">=</span> <span class="s1">'median'</span>
         <span class="n">value_col</span> <span class="o">=</span> <span class="s1">'median'</span>
@@ -9093,7 +9111,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="n">agg_func</span> <span class="o">=</span> <span class="s1">'mean'</span>
         <span class="n">value_col</span> <span class="o">=</span> <span class="s1">'mean'</span>
 
-    <span class="c1"># Compute statistics for bar plot</span>
     <span class="n">stats_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">columns_to_plot_bar</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">]]</span>
                 <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Evaluator'</span><span class="p">)</span>
                 <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="n">agg_func</span><span class="p">,</span> <span class="s1">'std'</span><span class="p">])</span>
@@ -9101,17 +9118,14 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
                 <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
     <span class="n">stats_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">,</span> <span class="s1">'Metric'</span><span class="p">,</span> <span class="n">value_col</span><span class="p">,</span> <span class="s1">'STD'</span><span class="p">]</span>
 
-    <span class="c1"># Create subplots: 2 rows, 1 column</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">'height_ratios'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
 
-    <span class="c1"># Bar plot on the top subplot</span>
     <span class="n">bar_plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Metric'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">value_col</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'Evaluator'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">stats_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'Set2'</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">agg_func</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> Scores of Evaluation Metrics'</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">agg_func</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> Score'</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
-    <span class="c1"># Add error bars if required</span>
     <span class="k">if</span> <span class="n">err_bars</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">bar</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bar_plot</span><span class="o">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">[</span><span class="n">value_col</span><span class="p">],</span> <span class="n">stats_df</span><span class="p">[</span><span class="s1">'STD'</span><span class="p">]):</span>
             <span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">val</span> <span class="o">-</span> <span class="n">std</span><span class="p">)</span>
@@ -9120,7 +9134,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
                            <span class="n">yerr</span><span class="o">=</span><span class="p">[[</span><span class="n">val</span> <span class="o">-</span> <span class="n">lower_bound</span><span class="p">],</span> <span class="p">[</span><span class="n">upper_bound</span> <span class="o">-</span> <span class="n">val</span><span class="p">]],</span>
                            <span class="n">fmt</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="c1"># Box plot on the bottom subplot for selected metrics</span>
     <span class="n">melted_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'Evaluator'</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="n">columns_to_plot_box</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">'Metric'</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">'Score'</span><span class="p">)</span>
     <span class="n">box_plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Metric'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Score'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'Evaluator'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">melted_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'Set2'</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Distribution of Evaluation Metrics'</span><span class="p">)</span>
@@ -9128,25 +9141,21 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Metrics'</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
-    <span class="c1"># Adjust legend</span>
     <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper right'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Evaluator'</span><span class="p">)</span>
 
-    <span class="c1"># Remove legends from subplots to avoid duplication</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Use this function by passing a DataFrame to it with appropriate columns.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=031a4e2d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44c2fc3a1cb70c23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9174,7 +9183,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">recursive_text_splitter_200</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
@@ -9207,7 +9216,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">bge_200_vector_store</span> <span class="o">=</span> <span class="n">VectorStore</span><span class="p">(</span><span class="n">embedding_function</span><span class="o">=</span><span class="n">bge_embeddings</span><span class="p">,</span>
@@ -9225,7 +9234,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">bge_200_vector_store</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">recursive_200_documents</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
@@ -9252,7 +9261,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">base_200_rag</span> <span class="o">=</span> <span class="n">RunnableParallel</span><span class="p">(</span>
@@ -9273,20 +9282,20 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>{'context': [Document(page_content='Routine Flare Emissions  AZoCleantech 04 May 2023  Schlumberger Limited  Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry s Methane and Routine Flare Emissions  AZoCleantech', metadata={'date': '2022-03-09', 'domain': 'azocleantech', 'origin_doc_id': 97583316, 'title': 'Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry’ s Methane and Routine Flare Emissions', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31294'}),
   Document(page_content='emissions by 1520 from 2016 levels It also aims to reduce methane intensity by 4050 and cut flaring intensity by 3545 The goals align with the UN accord the company said Worldwide production', metadata={'date': '2021-02-02', 'domain': 'naturalgasintel', 'origin_doc_id': 43632222, 'title': 'Under Pressure, ExxonMobil Ups Ante Against Global Warming, Promises to Contain Overall Costs', 'url': 'https://www.naturalgasintel.com/under-pressure-exxonmobil-ups-ante-against-global-warming-promises-to-contain-overall-costs/'}),
   Document(page_content='commitments and worked to lower natural gas flaring and methane emissions ExxonMobil in January was the latest supermajor to announce a net zero GHG emissions target The 2050 strategy was  tested for', metadata={'date': '2022-03-03', 'domain': 'naturalgasintel', 'origin_doc_id': 41880766, 'title': 'Window ‘ Brief and Rapidly Closing’ to Mitigate, Adapt to Climate Change, UN Says', 'url': 'https://www.naturalgasintel.com/window-brief-and-rapidly-closing-to-mitigate-adapt-to-climate-change-un-says/'}),
   Document(page_content='Upstream operations compared to 2016 levels four years ahead of schedule  the company said  This is supported by an anticipated reduction of 4050 in methane intensity and 3545 in flaring intensity', metadata={'date': '2021-12-13', 'domain': 'naturalgasintel', 'origin_doc_id': 56461266, 'title': 'ExxonMobil Envisions Carbon-Neutral Permian Operations by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-envisions-carbon-neutral-permian-operations-by-2030/'})],
  'question': 'Is the company aiming to reduce gas flaring?',
- 'answer': 'Yes, the company is aiming to reduce flaring intensity by 3545 as part of its goals to eliminate methane and routine flare emissions in the oil and gas industry.'}</pre>
+ 'answer': 'Yes, the company is aiming to reduce gas flaring by 35-45%.'}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17d38107">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5fd68ef0270c5bed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9301,7 +9310,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">base_200_evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Experiment 1: Baseline 200"</span><span class="p">,</span>
@@ -9358,7 +9367,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">experiment_1_combination</span> <span class="o">=</span> <span class="n">combine_evaluator_results</span><span class="p">([</span><span class="n">base_evaluator</span><span class="p">,</span> <span class="n">base_200_evaluator</span><span class="p">])</span>
@@ -9403,7 +9412,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">base_200_evaluator</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
@@ -9417,7 +9426,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9489,7 +9498,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ask_handpicked_questions</span><span class="p">(</span><span class="n">base_200_rag</span><span class="p">)</span>
@@ -9506,7 +9515,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Question: Why does melting ice contribute to global warming?
-Answer: Melting ice contributes to global warming because it releases freshwater from long-term storage in continental ice sheets and ocean thermal expansion, which in turn leads to a significant rise in sea levels, and promotes net emissions of methane and nitrous oxide in permafrost wetlands. This, in turn, exacerbates global warming and climate change.
+Answer: Melting ice contributes to global warming because it causes freshwater to be released from long-term storage in continental ice sheets and ocean thermal expansion, which both contribute significantly to sea level rise. This, in turn, promotes the net emissions of methane and nitrous oxide in permafrost wetlands, exerting a significant impact on global warming. Additionally, melting of sea ice in the Arctic Ocean has significant ecological, economic, and climate effects.
 
 
 Question: In 2021, what were the top 3 states in the US in terms of total solar power generating capacity?
@@ -9514,7 +9523,7 @@ Answer: The top 3 states in the US in terms of total solar power generating capa
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero industry more competitive and accelerate its transition to net zero, while also boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. The plan aims to expand renewable energy and green technologies, ensure the right skills are available for the energy transition, facilitate open and fair trade in the clean tech space, and ease state aid rules.
+Answer: The EU's Green Deal Industrial Plan is a proposal to boost investment, economic resilience, and accelerate the transition to net zero by expanding renewable energy and green technologies, including an easing of state aid rules, and facilitating industrial policy at the national and EU level to ensure open and fair trade in the clean tech space.
 
 
 </pre>
@@ -9546,7 +9555,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e34093f1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33e1f0e4204e5bca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9564,7 +9573,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.retrievers</span> <span class="kn">import</span> <span class="n">MultiQueryRetriever</span>
@@ -9593,7 +9602,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">template</span> <span class="o">=</span> <span class="s2">"""You are an AI language model assistant. Your task is to generate five </span>
@@ -9620,7 +9629,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.load</span> <span class="kn">import</span> <span class="n">dumps</span><span class="p">,</span> <span class="n">loads</span>
@@ -9646,7 +9655,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">mqr_rag</span> <span class="o">=</span> <span class="n">RunnableParallel</span><span class="p">(</span>
@@ -9665,7 +9674,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">mqr_rag</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">"Is the company aiming to reduce gas flaring?"</span><span class="p">)</span>
@@ -9687,33 +9696,32 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'context': [Document(page_content='emissions as does incomplete combustion during the flaring process while flaring converts methane to CO2 More broadly climate change  practically an afterthought during the 2016 presidential campaign  has taken on a more prominent role in political discourse as seen during the debates between Biden and President Trump And while natural gas is the cleanest fossil fuel it increasingly has been under the microscope as its share of the energy mix grows  The world has changed a lot in four years  Erin Blanton senior research scholar at Columbia University s Center on Global Energy Policy told NGI  I think the industry is starting to really wake up to the fact that they have to deal with this black eye which is methaneif they want to survive  The good news she said is that there are numerous policy options to reduce emissions in ways that are technically and economically feasible for the industry One example she cited is the EPA s 2016 Oil and Natural Gas New Source Performance Standards', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
-  Document(page_content='propulsion technology have driven down emissions with more efficient ship engines reducing fuel consumption needs LNG carriers built today can carry more cargo while using less fuel making them more efficient  Cargo space is up 30 and fuel consumption is down close to 50  Kalleklev said  So you typically have a CO2 footprint which is 5560 less on the modern ship  Other innovations have helped drive emissions on carriers down For example reliquefaction systems which reliquefy boiloff gas and return it to the cargo tank are virtually standard issue on new LNG carriers Tutturen said Boiloff is LNG that evaporates during transport  Today to order a gas carrier without a reliquefaction system is unheard of  Tutturen said Seven of Flex s 13 carriers have partial or full reliquefaction units Kalleklev said The ships with full reliquefaction capabilities can bring the boiloff rate to 0035 while partial reliquefaction units can bring it to 0075 The six ships that don t have reliquefaction', metadata={'date': '2021-06-04', 'domain': 'naturalgasintel', 'origin_doc_id': 75770648, 'title': 'Vessel Owners Scoping Out Technology to Cut CO2 Emissions as Decarbonization Rules Loom', 'url': 'https://www.naturalgasintel.com/vessel-owners-scoping-out-technology-to-cut-co2-emissions-as-decarbonization-rules-loom-lng-spotlight/'}),
-  Document(page_content='knowledge and expertise in international reporting and certification standards related to GHG emissions Recent customer engagements include building a digital platform to support a multisensor multioperator monitoring program and entering into a consulting contract with an IOC to enable them to comply with the Oil and Gas Methane Partnership  OGMP 20 framework for methane Schlumberger Limited  2022 March 09 Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry s Methane and Routine Flare Emissions AZoCleantech Retrieved on May 04 2023 from https wwwazocleantechcomnewsaspx newsID31294 Schlumberger Limited  Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry s Methane and Routine Flare Emissions  AZoCleantech 04 May 2023  Schlumberger Limited  Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry s Methane and Routine Flare Emissions  AZoCleantech https wwwazocleantechcomnewsaspx newsID31294  accessed May 04 2023', metadata={'date': '2022-03-09', 'domain': 'azocleantech', 'origin_doc_id': 97583316, 'title': 'Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry’ s Methane and Routine Flare Emissions', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31294'}),
-  Document(page_content='with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil s Bart Cahir senior vice president of unconventional  Throughout the value chain our people are working hard to help reduce the greenhouse gas emissions associated with the products that enable modern life  According to management ExxonMobil is on', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
-  Document(page_content='for the gas in its 2019 ESG report This begs the question as to what the variations are North Seawide  It is vital that we understand SF6 is so detrimental to fighting climate change beyond 2100 that it has no place in sustainable business models today  say Holst and Jespersen  Even if CO2 emissions are reduced in alignment with 2100 Paris Agreement goals reporting in a 100year timeframe will not save a planet billions of years old  GHG reporting must be better regulated and scrutinised in order to deliver a truly green energy transition Releasing a gas causing irreversible damage can not be an acceptable tradeoff for a shortterm  green  transition  While most company reports claim no alternatives exist this is not true Therefore SF6free equipment must be mandatorily installed  A green transition goes beyond 2100 yet poor regulation enables energy companies to present SF6CO2e favourably by using lower emission factors  Offshore wind energy players have not provided comparable', metadata={'date': '2022-12-12', 'domain': 'energyvoice', 'origin_doc_id': 23539255, 'title': 'Wind and power seek to clean up act on SF6 greenhouse gas', 'url': 'https://www.energyvoice.com/renewables-energy-transition/464650/wind-and-power-seek-to-clean-up-act-on-dangerous-greenhouse-gas-sf6/'}),
-  Document(page_content='really poorquality offsets which kind of renders what you re doing kind of useless As Pavilion Energy we are starting off step by step First is to agree on a GHG methodology that is verifiable and measurable So we are working with our suppliers in Qatar as well as BP and Chevron to come up with an industry standard  Kor told delegates at the virtual conference He added that when a carbon neutral LNG cargo is handed over at the importing terminal a certificate of emissions that can be independently verified needs to be handed over  Emissions need to be measured endtoend From the wellhead to burner tip I think from wellhead to liquefaction plants plus shipping I think it s only about 2025 of the overall emissions With 7080 of the emissions coming from the downstream component ie flange to burning tip So for the LNG buyers especially utilities they need to accurately measure the GHG emissions  said Kor Indeed generally speaking carbon offsets do not appear to cover regasification and', metadata={'date': '2021-08-27', 'domain': 'energyvoice', 'origin_doc_id': 62700670, 'title': 'Buyers question ‘ carbon-neutral LNG’ cargo credentials - News for the Energy Sector', 'url': 'https://www.energyvoice.com/oilandgas/asia/345733/buyers-question-carbon-neutral-lng-cargo-credentials/'}),
-  Document(page_content='Qatar Petroleum  QP has launched a new sustainability strategy aiming to reduce the emissions intensity of its LNG facilities by 25 The company also aims to reduce emissions from its upstream facilities by at least 15 and cut flaring intensity in the upstream by more than 75 The Qatari NOC set 2013 as the baseline It intends to achieve the targets by 2030 QP is targeting an end to routine flaring by 2030 and limiting fugitive methane emissions It will accomplish this by setting a methane intensity target of 02 across all facilities by 2025 The company has spent  900 million between 2012 and 2018 on reducing flaring Another  170mn has been committed for investment from 2018 to 2021 QP has committed to using carbon capture and storage  CCS facilities to capture more than 7 million tonnes per year In December 2020 QP said it planned to sequester this amount of CO2 by 2027 The strategy is consistent with the Paris Agreement the company has said QP aims to add more than 4 GW of renewable', metadata={'date': '2021-01-13', 'domain': 'energyvoice', 'origin_doc_id': 32991764, 'title': 'QP launches carbon cut strategy - News for the Energy Sector', 'url': 'https://www.energyvoice.com//www.energyvoice.com/oilandgas/middle-east/lng-middle-east/291211/qp-emissions-lng-sustainability/'}),
-  Document(page_content='s Mexico Gas Price Index Read the analysis of our fifth survey of active players in Mexico showcasing marketdriven insights now   The company plans to electrify its operations with lowcarbon power which may include wind solar hydrogen natural gas with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil', metadata={'date': '2021-12-13', 'domain': 'naturalgasintel', 'origin_doc_id': 56461266, 'title': 'ExxonMobil Envisions Carbon-Neutral Permian Operations by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-envisions-carbon-neutral-permian-operations-by-2030/'}),
-  Document(page_content='recommended a vote against any Scope 3 goal saying its existing plan and actions were enough  OD Mar921 US companies have thus far largely resisted the broader climate goals set in Europe instead backing a more incremental approach focused on Scope 1 and 2 emissions from operations  OD May2121 But 61 of shareholders defied Chevron s management to vote in favor of Scope 3 reductions according to preliminary results showing dissatisfaction with the status quo Chevron told Energy Intelligence it will carefully consider the results and will continue to engage with stockholders Investment giant BlackRock threw its weight behind the proposal saying in a note that it believes companies in carbonintensive industries should aim to set Scope 3 emissions reduction targets although acknowledging this remains a  nascent  area especially in the US BlackRock believes Chevron is on the  right path  and has confidence in its management but says it  supported the proposal which is clear and not', metadata={'date': '2021-05-27', 'domain': 'energyintel', 'origin_doc_id': 12930274, 'title': 'Chevron Shareholder Vote Increases Climate Pressure', 'url': 'https://www.energyintel.com/0000017b-a7dd-de4c-a17b-e7df5da10000'}),
-  Document(page_content='compared to only five during all of 2020 Significantly  the growth in popularity of carbonneutral LNG has also brought to light questions about how environmentally friendly the superchilled fuel could become Standards vary making it difficult to determine how much carbon has been mitigated emitted or offset through trading  reported Natural Gas Intelligence  NGI last month  It s totally the Wild West out there in terms of verification systems and standards  FTI s Madeline Jowdy senior director and coauthor of the firm s report told NGI s LNG Insight  But I think because we re in the early stages it s still really difficult to account for the emissions generated in the upstream and liquefaction processes  Beyond the maiden carbon neutral LNG cargo Petronas said it is also reducing its carbon footprint throughout its LNG and gas value chain  These carbon reduction efforts among others include powering the PLC with 90MW of hydroelectricity conducting flare recovery as well as carbon', metadata={'date': '2021-08-18', 'domain': 'energyvoice', 'origin_doc_id': 45728299, 'title': "Question marks as Petronas delivers its first ‘ carbon neutral LNG ' cargo - News for the Energy Sector", 'url': 'https://www.energyvoice.com/oilandgas/asia/343435/petronas-deliver-its-first-carbon-neutral-lng-cargo/'}),
-  Document(page_content='storage and regasification units  FSRU or as floating storage units for existing FSRUs or terminals While the sector has made strides in lowering its carbon footprint more will be needed to ensure compliance with the IMO s guidelines While boiloff rates have come down sharply over the past 15 years eliminating them completely isn t really feasible Kalleklev said That s because crews rely on some of that boiloff for fuel  Getting the boiloff down to 000 doesn t really make sense because then you will have to burn diesel which is typically more expensive  he said This is where new fuels such as biogas and synthetic gas can play a role said DNV Maritime s Christos Chryssakis business development manager  They have this cargo that has to be used otherwise it s wasted  he told NGI  So I think the only option for businesses then is to start using some kind of carbonneutral LNG or low carbon LNG and that could be biogas or it could be synthetic gas in the future Biogas is already available', metadata={'date': '2021-06-04', 'domain': 'naturalgasintel', 'origin_doc_id': 75770648, 'title': 'Vessel Owners Scoping Out Technology to Cut CO2 Emissions as Decarbonization Rules Loom', 'url': 'https://www.naturalgasintel.com/vessel-owners-scoping-out-technology-to-cut-co2-emissions-as-decarbonization-rules-loom-lng-spotlight/'}),
-  Document(page_content='US oil major Chevron faced some stiff shareholder pushback at its annual general meeting this week including pressure to do more on climate concerns  OD May2621 Energy Intelligence breaks down what unfolded at the meeting and what it means for the company Q What was the Scope 3 proposal that passed Wednesday A The proposal asks Chevron to take actions to  substantially  reduce Scope 3 emissions  those released by the products it sells  over the medium to long term The resolution is both vague and nonbinding and does not explicitly require any specific course of action It needed to be structured that way due to  S Securities and Exchange Commission  SEC rules that prohibit  micromanaging  The resolution leaves it up to Chevron as to how best to address the issue Q What does its passage mean for Chevron A While the resolution creates no formal obligation it brings considerable pressure on Chevron to rethink its emissions strategy of setting only incremental mediumterm targets Chevron', metadata={'date': '2021-05-27', 'domain': 'energyintel', 'origin_doc_id': 12930274, 'title': 'Chevron Shareholder Vote Increases Climate Pressure', 'url': 'https://www.energyintel.com/0000017b-a7dd-de4c-a17b-e7df5da10000'}),
-  Document(page_content='help our customers deal with one of the most pressing issues of climate change the urgent need to cut methane emissions Due to its potency as a GHG and its major share of the industry s overall operational emissions tackling methane emissions will make a significant impact  As energy companies seek to operate in a more sustainable manner they will need to more reliably report and reduce their methane emissions and flaring activity Currently when looking for answers and partners to address this challenge they are faced with a patchwork of disparate offeringsSEES changes that SEES delivers a holistic approach to enable operators to develop a successful methane emissions elimination strategy from the outset The approach builds on three pillarsplan measure and actthat are all underpinned by the industry s first methane emissions digital platform accessible in the DELFI  cognitive E  P environment to provide a comprehensive and differentiated path for operators to achieve their', metadata={'date': '2022-03-09', 'domain': 'azocleantech', 'origin_doc_id': 97583316, 'title': 'Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry’ s Methane and Routine Flare Emissions', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31294'}),
-  Document(page_content='have driven down emissions with more efficient ship engines reducing fuel consumption needs LNG carriers built today can carry more cargo while using less fuel making them more efficient  Cargo space is up 30 and fuel consumption is down close to 50  Kalleklev said  So you typically have a CO2 footprint which is 5560 less on the modern ship  Other innovations have helped drive emissions on carriers down For example reliquefaction systems which reliquefy boiloff gas and return it to the cargo tank are virtually standard issue on new LNG carriers Tutturen said Boiloff is LNG that evaporates during transport  Today to order a gas carrier without a reliquefaction system is unheard of  Tutturen said Seven of Flex s 13 carriers have partial or full reliquefaction units Kalleklev said The ships with full reliquefaction capabilities can bring the boiloff rate to 0035 while partial reliquefaction units can bring it to 0075 The six ships that don t have reliquefaction capabilities have newer', metadata={'date': '2021-06-10', 'domain': 'naturalgasintel', 'origin_doc_id': 28758874, 'title': 'New Decarbonization Rules Could Speed ‘ Attrition’ of Older LNG Carriers, Flex LNG CEO Says', 'url': 'https://www.naturalgasintel.com/new-decarbonization-rules-could-speed-attrition-of-older-lng-carriers-flex-lng-ceo-says/'}),
-  Document(page_content='ConocoPhillips was the first US operator to unveil an emissions strategy aligned with the United Nations climate accord adding  we ve got a game plan and a pathway to get there and we think that s important for our industry and we need everybody to be doing that  The company in 2020 announced its intention to reduce operational GHG emissions intensity by 35 to 45 by 2030 a revision from the previous goal of 5 to 15 and to reach net zero emissions by 2050 The path to net zero will involve tools such as emissions offsets and carbon capture utilization and sequestration Lance said Within the ESG initiatives Lance and Sheffield also stressed the importance of curbing routine natural gas flaring which remains a stubborn challenge in the Permian despite progress made on reducing flaring intensity Other measures such as electrifying fracture fleets and better monitoring of methane leaks will be crucial as well they said Sheffield and Lance said they support the Biden administration s efforts', metadata={'date': '2021-03-05', 'domain': 'naturalgasintel', 'origin_doc_id': 17278332, 'title': 'ConocoPhillips, Pioneer Natural CEOs Preach Discipline as Permian Activity Rebounds', 'url': 'https://www.naturalgasintel.com/conocophillips-pioneer-natural-ceos-preach-discipline-as-permian-activity-rebounds/'}),
+<pre>{'context': [Document(page_content='US oil major Chevron faced some stiff shareholder pushback at its annual general meeting this week including pressure to do more on climate concerns  OD May2621 Energy Intelligence breaks down what unfolded at the meeting and what it means for the company Q What was the Scope 3 proposal that passed Wednesday A The proposal asks Chevron to take actions to  substantially  reduce Scope 3 emissions  those released by the products it sells  over the medium to long term The resolution is both vague and nonbinding and does not explicitly require any specific course of action It needed to be structured that way due to  S Securities and Exchange Commission  SEC rules that prohibit  micromanaging  The resolution leaves it up to Chevron as to how best to address the issue Q What does its passage mean for Chevron A While the resolution creates no formal obligation it brings considerable pressure on Chevron to rethink its emissions strategy of setting only incremental mediumterm targets Chevron', metadata={'date': '2021-05-27', 'domain': 'energyintel', 'origin_doc_id': 12930274, 'title': 'Chevron Shareholder Vote Increases Climate Pressure', 'url': 'https://www.energyintel.com/0000017b-a7dd-de4c-a17b-e7df5da10000'}),
   Document(page_content='by implementing measures to curb emissions produce LNG using the latest proven carbon reduction technologies and compensating for residual emissions where necessary  said QP CEO Saad Sherida AlKaabi QP said the strategy calls on deploying carbon capture and storage facilities in the country to trap 7 million tons  Mt of carbon dioxide each year It would also require the company to add 4 GW of electricity from carbonfree renewable energy to its portfolio in the country to eliminate more than 5 Mtyear of carbon emissions QP is also aiming to reduce flaring intensity across its upstream facilities by more than 75 with an overall goal to eliminate  routine flaring  by 2030 It also wants to limit fugitive methane emissions along the natural gas value chain with a methane intensity target of 02 across all facilities by 2025 AlKaabi said the plan ensures  we embed sustainability considerations into the way we plan and manage our entire business and operations  QP joins a growing list of', metadata={'date': '2021-01-21', 'domain': 'naturalgasintel', 'origin_doc_id': 22669343, 'title': 'Qatar Petroleum Launches Initiative to Cut Emissions from LNG, Upstream Operations', 'url': 'https://www.naturalgasintel.com/qatar-petroleum-launches-initiative-to-cut-emissions-from-lng-upstream-operations/'}),
-  Document(page_content='By clicking  Allow All  you agree to the storing of cookies on your device to enhance site navigation analyse site usage and support us in providing free open access scientific content More info Schlumberger announced today the launch of Schlumberger Endtoend Emissions Solutions  SEES The business offers a comprehensive set of services and cuttingedge technologies designed to give operators a robust and scalable solution for measuring monitoring reporting and ultimately eliminating methane and routine flare emissions from their operations SEES launches at a critical time in the industrytoday we witnessed leadership from Oil and Gas Climate Initiative  OGCI members who announced their aim for zero methane gas emissions in oil and gas operations by 2030 Methane and flare emissions currently account for more than 60 of direct  Scope 1 and 2 greenhouse gas  GHG emissions from the industry Schlumberger Chief Technology Officer Demos Pafitis commented  We have created SEES specifically to', metadata={'date': '2022-03-09', 'domain': 'azocleantech', 'origin_doc_id': 97583316, 'title': 'Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry’ s Methane and Routine Flare Emissions', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31294'})],
+  Document(page_content='which will undoubtedly help more LMI communities get the benefits of clean and reliable solar energy  We commend DOE for taking targeted action and creating a program that addresses one of the top challenges for obtaining community solar customers  On behalf of the more than 775000 active and retired members of the International Brotherhood of Electrical Workers  IBEW and the members of the Solar Energies Industries Association  SEIA the national trade association for the US solar industry we urge members of Congress to get back to the negotiating table and pass proworker progrowth antiinflationary climate legislation We believe that there is broad support for the legislation which will be a boon to the US economy and deliver critical climate relief The clean energy transformation that our nation needs to address climate change requires a comprehensive approach including welltrained highlyskilled union workers as well as hundreds of billions of dollars in private sector investment in', metadata={'date': '2022-07-28', 'domain': 'cleantechnica', 'origin_doc_id': 49768805, 'title': "U.S. Solar &amp; Storage Industry Praises Joe Biden's Targeted Actions on Community Solar", 'url': 'https://cleantechnica.com/2022/07/28/u-s-solar-storage-industry-praises-bidens-targeted-actions-on-community-solar/'}),
+  Document(page_content='recommended a vote against any Scope 3 goal saying its existing plan and actions were enough  OD Mar921 US companies have thus far largely resisted the broader climate goals set in Europe instead backing a more incremental approach focused on Scope 1 and 2 emissions from operations  OD May2121 But 61 of shareholders defied Chevron s management to vote in favor of Scope 3 reductions according to preliminary results showing dissatisfaction with the status quo Chevron told Energy Intelligence it will carefully consider the results and will continue to engage with stockholders Investment giant BlackRock threw its weight behind the proposal saying in a note that it believes companies in carbonintensive industries should aim to set Scope 3 emissions reduction targets although acknowledging this remains a  nascent  area especially in the US BlackRock believes Chevron is on the  right path  and has confidence in its management but says it  supported the proposal which is clear and not', metadata={'date': '2021-05-27', 'domain': 'energyintel', 'origin_doc_id': 12930274, 'title': 'Chevron Shareholder Vote Increases Climate Pressure', 'url': 'https://www.energyintel.com/0000017b-a7dd-de4c-a17b-e7df5da10000'}),
+  Document(page_content='Climate change and the higher frequency of adverse weather events alongside issues with dependence on other countries for energy imports highlighted by Russia s war on Ukraine are prompting governments to ramp up the production of domestic green energy In the United States the Inflation Reduction Act  IRA has been set up to finance green power installations with a rollout of infrastructure that will dramatically boost the renewable energy supply Still this growth could be tempered by tariffs and other trade actions that hold up foreign module imports If there are to be delays to new developments as a result of issues in the solar module market it is critical to safeguard the capacity we already have in place Risks associated with solar energy production such as the risk of fire must be taken more seriously The risk of fire on solar assets is largely underestimated Solar system fires more than doubled between 2015 and 2018 as reported by the US Fire Administration Identified sources of', metadata={'date': '2023-02-24', 'domain': 'solarpowerworldonline', 'origin_doc_id': 8566369, 'title': 'How and why the solar industry must safeguard assets from fire risks', 'url': 'https://www.solarpowerworldonline.com/2023/02/how-and-why-the-solar-industry-must-safeguard-assets-from-fire-risks/'}),
+  Document(page_content='Increasingly however the sector is being asked how to address concerns about toxic pollution in production resource management slavery in the supply chain and more Adham Makki decarbonization research manager at EcoAct an Atos company warns that solar cell manufacturing is a resourceintensive process requiring a substantial amount of water and industrial materials  The manufacturing process also involves toxic waste unsustainable mining practices and habitat loss all of which need careful consideration if we are to meet the Sustainable Development Goals  SDGs  he says The issue of labor practices is increasingly high profile as well In 2021 the Helen Kennedy Centre released a report exploring accusations of forced labor in the Xinjiang region which is responsible for as much as 50 of global polysilicon supply The United States has already imposed restrictions on imports from the Xinjiang region and the USbased Solar Energy Industries Association  SEIA launched a pledge for companies', metadata={'date': '2022-09-10', 'domain': 'pv-magazine', 'origin_doc_id': 79979877, 'title': 'The weekend read: What is the future of solar for ESG finance? – pv magazine International', 'url': 'https://www.pv-magazine.com/2022/09/10/the-weekend-read-what-is-the-future-of-solar-for-esg-finance/#comment-323588'}),
+  Document(page_content='s Mexico Gas Price Index Read the analysis of our fifth survey of active players in Mexico showcasing marketdriven insights now   The company plans to electrify its operations with lowcarbon power which may include wind solar hydrogen natural gas with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil', metadata={'date': '2021-12-13', 'domain': 'naturalgasintel', 'origin_doc_id': 56461266, 'title': 'ExxonMobil Envisions Carbon-Neutral Permian Operations by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-envisions-carbon-neutral-permian-operations-by-2030/'}),
+  Document(page_content='sources could dramatically cut aviations carbon footprint and decrease its reliance on fossil fuels Last fall the White House launched the Sustainable Aviation Fuel Grand Challenge encouraging government agencies to work together to promote the production of SAFs The primary goals of this initiative are to 1 produce enough SAFs to meet 100 of jet fuel demand by 2050 and 2 cut greenhouse gas emissions from aviation at least by half calculated on a lifecycle basis using Argonnes Greenhouse Gases Regulated Emissions and Energy Use in Technologies Model  GREET model GREET has been used by many agencies such DOE FAA and International Civil Aviation Organization  ICAO to quantify lifecycle GHG emissions of various SAF pathways Argonne is in a unique position to help meet this challenge by conducting critical research on SAFs and how these new lowcarbon fuels actually work inside a jet engine Argonne has pioneered new ways to study and model fuel performance inside of automotive and aircraft', metadata={'date': '2022-06-06', 'domain': 'azocleantech', 'origin_doc_id': 53923532, 'title': 'Argonne Leads Effort to Use Sustainable Aviation Fuels for Decarbonizing Aviation', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31813'}),
+  Document(page_content='about 84 times more potent as a greenhouse gas during the first two decades after its release than CO2 according to the Environmental Defense Fund  EDF The gas industry including national oil companies supermajors independents midstreamers and utilities has stepped up voluntary efforts to plug methane leaks and reduce routine gas flaring and venting amid growing calls from investors to take meaningful action on climate However as techniques for measuring greenhouse gas  GHG pollution have improved the challenge appears increasingly daunting A recent EDF study for example found that annual oil and gas methane emissions in New Mexico stand at an estimated 11 million metric tons about five times higher than what current Environmental Protection Agency  EPA data suggest Venting and flaring meanwhile reached record high levels in the United States during 2019 So far only Alaska and Colorado have banned routine flaring and venting in the upstream segment Venting contributes to methane', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
+  Document(page_content='investors  We believe the future of energy will be lower carbon and intend to be a leader today and in that future We believe energy enables modern life  While  affordable reliable energy will continue to be essential to power a growing economy and to lift billions out of poverty  lowering the carbon intensity of oil and gas operations is imperative Earlier this year Chevron set lower carbon dioxide  CO2 targets to achieve by 2028 with zero routine natural gas flaring by 2030 However shareholders delivered a clear message in May demanding more action to reduce the impacts of climate change In a nonbinding resolution 60 voted for Chevron to reduce emissions of its customers aka Scope 3 Cutting Scope 1  direct emissions and Scope 2 which are indirect emissions controlled by a company have become standard protocol for oil and gas operators Tracking and reducing customer emissions is a more expensive challenge but management responded by launching Chevron New Energies in July Since then a', metadata={'date': '2021-09-15', 'domain': 'naturalgasintel', 'origin_doc_id': 39763362, 'title': 'Chevron Tripling Low-Carbon Spending to Expand Opportunities, Entice New Customers', 'url': 'https://www.naturalgasintel.com/chevron-tripling-low-carbon-spending-to-expand-opportunities-entice-new-customers/'}),
+  Document(page_content='ConocoPhillips was the first US operator to unveil an emissions strategy aligned with the United Nations climate accord adding  we ve got a game plan and a pathway to get there and we think that s important for our industry and we need everybody to be doing that  The company in 2020 announced its intention to reduce operational GHG emissions intensity by 35 to 45 by 2030 a revision from the previous goal of 5 to 15 and to reach net zero emissions by 2050 The path to net zero will involve tools such as emissions offsets and carbon capture utilization and sequestration Lance said Within the ESG initiatives Lance and Sheffield also stressed the importance of curbing routine natural gas flaring which remains a stubborn challenge in the Permian despite progress made on reducing flaring intensity Other measures such as electrifying fracture fleets and better monitoring of methane leaks will be crucial as well they said Sheffield and Lance said they support the Biden administration s efforts', metadata={'date': '2021-03-05', 'domain': 'naturalgasintel', 'origin_doc_id': 17278332, 'title': 'ConocoPhillips, Pioneer Natural CEOs Preach Discipline as Permian Activity Rebounds', 'url': 'https://www.naturalgasintel.com/conocophillips-pioneer-natural-ceos-preach-discipline-as-permian-activity-rebounds/'}),
+  Document(page_content='with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil s Bart Cahir senior vice president of unconventional  Throughout the value chain our people are working hard to help reduce the greenhouse gas emissions associated with the products that enable modern life  According to management ExxonMobil is on', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
+  Document(page_content='compared to only five during all of 2020 Significantly  the growth in popularity of carbonneutral LNG has also brought to light questions about how environmentally friendly the superchilled fuel could become Standards vary making it difficult to determine how much carbon has been mitigated emitted or offset through trading  reported Natural Gas Intelligence  NGI last month  It s totally the Wild West out there in terms of verification systems and standards  FTI s Madeline Jowdy senior director and coauthor of the firm s report told NGI s LNG Insight  But I think because we re in the early stages it s still really difficult to account for the emissions generated in the upstream and liquefaction processes  Beyond the maiden carbon neutral LNG cargo Petronas said it is also reducing its carbon footprint throughout its LNG and gas value chain  These carbon reduction efforts among others include powering the PLC with 90MW of hydroelectricity conducting flare recovery as well as carbon', metadata={'date': '2021-08-18', 'domain': 'energyvoice', 'origin_doc_id': 45728299, 'title': "Question marks as Petronas delivers its first ‘ carbon neutral LNG ' cargo - News for the Energy Sector", 'url': 'https://www.energyvoice.com/oilandgas/asia/343435/petronas-deliver-its-first-carbon-neutral-lng-cargo/'}),
+  Document(page_content='emissions as does incomplete combustion during the flaring process while flaring converts methane to CO2 More broadly climate change  practically an afterthought during the 2016 presidential campaign  has taken on a more prominent role in political discourse as seen during the debates between Biden and President Trump And while natural gas is the cleanest fossil fuel it increasingly has been under the microscope as its share of the energy mix grows  The world has changed a lot in four years  Erin Blanton senior research scholar at Columbia University s Center on Global Energy Policy told NGI  I think the industry is starting to really wake up to the fact that they have to deal with this black eye which is methaneif they want to survive  The good news she said is that there are numerous policy options to reduce emissions in ways that are technically and economically feasible for the industry One example she cited is the EPA s 2016 Oil and Natural Gas New Source Performance Standards', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
+  Document(page_content='for the gas in its 2019 ESG report This begs the question as to what the variations are North Seawide  It is vital that we understand SF6 is so detrimental to fighting climate change beyond 2100 that it has no place in sustainable business models today  say Holst and Jespersen  Even if CO2 emissions are reduced in alignment with 2100 Paris Agreement goals reporting in a 100year timeframe will not save a planet billions of years old  GHG reporting must be better regulated and scrutinised in order to deliver a truly green energy transition Releasing a gas causing irreversible damage can not be an acceptable tradeoff for a shortterm  green  transition  While most company reports claim no alternatives exist this is not true Therefore SF6free equipment must be mandatorily installed  A green transition goes beyond 2100 yet poor regulation enables energy companies to present SF6CO2e favourably by using lower emission factors  Offshore wind energy players have not provided comparable', metadata={'date': '2022-12-12', 'domain': 'energyvoice', 'origin_doc_id': 23539255, 'title': 'Wind and power seek to clean up act on SF6 greenhouse gas', 'url': 'https://www.energyvoice.com/renewables-energy-transition/464650/wind-and-power-seek-to-clean-up-act-on-dangerous-greenhouse-gas-sf6/'}),
+  Document(page_content='could represent a significant financial loss as a result of lost revenue At a time when the priority is to develop and produce as much solar energy as possible we need to be able to rely on maximum production from existing solar farms A fire detection and suppression system has to be in place for operators to protect their personnel and their assets and avoid rising insurance costs Ideally as we collect more and more data about solar farm fires improvements can be made from the very start with the inclusion of a fire risk assessment at design stage But for assets already deployed and operational Fire Risk Assessments  FRA must become mandatory The fire risk assessment of a solar farm can identify potential firerelated hazards and suggest the solutions needed to eliminate as many risks as possible Such an assessment will support the education of the O  M team on the causes of fire ignition and help prevent risks through routine operations and maintenance and taking a proactive stance', metadata={'date': '2023-02-24', 'domain': 'solarpowerworldonline', 'origin_doc_id': 8566369, 'title': 'How and why the solar industry must safeguard assets from fire risks', 'url': 'https://www.solarpowerworldonline.com/2023/02/how-and-why-the-solar-industry-must-safeguard-assets-from-fire-risks/'})],
  'question': 'Is the company aiming to reduce gas flaring?',
- 'answer': 'Yes, the company is aiming to reduce gas flaring.'}</pre>
+ 'answer': 'Yes, the company is aiming to reduce gas flaring by more than 75% by the end of this year and eliminate all routine flaring in the basin by the end of 2022.'}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc751589">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=238c64b1c208304b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9728,7 +9736,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to make its net zero i
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">mqr_evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Experiment 2: Multi-Query Retrieval"</span><span class="p">,</span>
@@ -9785,7 +9793,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">experiment_2_combination</span> <span class="o">=</span> <span class="n">combine_evaluator_results</span><span class="p">([</span><span class="n">base_evaluator</span><span class="p">,</span> <span class="n">base_200_evaluator</span><span class="p">,</span> <span class="n">mqr_evaluator</span><span class="p">])</span>
@@ -9830,7 +9838,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">mqr_evaluator</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
@@ -9844,7 +9852,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9916,7 +9924,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ask_handpicked_questions</span><span class="p">(</span><span class="n">mqr_rag</span><span class="p">)</span>
@@ -9933,7 +9941,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Question: Why does melting ice contribute to global warming?
-Answer: When ice melts, it reduces the amount of reflective white ice and increases the amount of dark water, which absorbs more solar energy and contributes to global warming. Additionally, melting ice can lead to the release of greenhouse gases trapped within it, further contributing to warming.
+Answer: Melting ice contributes to global warming because when white ice reflects the sun's rays, it helps to cool the planet. However, when dark sea absorbs over ten times as much solar energy, it contributes to global warming. Additionally, the melting of sea ice can lead to a feedback loop where less ice means less reflection, leading to even more warming. Furthermore, melting sea ice can have an impact on ecosystems, which can also contribute to climate change.
 
 
 Question: In 2021, what were the top 3 states in the US in terms of total solar power generating capacity?
@@ -9941,7 +9949,7 @@ Answer: The top 3 states in the US in terms of total solar power generating capa
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment and economic resilience in the bloc to tackle the challenges of the green transition. It aims to make the EU's net zero industry more competitive and accelerate its transition to net zero by facilitating trade agreements, protecting the single market, creating a Critical Raw Materials Club, upgrading the regulatory framework, easing state aid rules, securing access to raw materials, and enhancing skills and improving supply chain resilience. It also seeks to support the expansion of European manufacturing of technologies, goods, and services needed to achieve its climate targets and to make Europe a leader in the clean tech revolution.
+Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. It seeks to make the EU's net zero industry more competitive and accelerate its transition to net zero by upgrading the bloc's regulatory framework, easing state aid rules, securing access to critical raw materials, and speeding up investment and financing for clean tech production. The plan includes proposals to make state aid more flexible, mobilize European funds, create a sovereign wealth fund, and improve trade agreements protecting the single market.
 
 
 </pre>
@@ -9972,7 +9980,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=95c5a0dc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72add0f9f182c210">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10001,11 +10009,10 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Few Shot Examples</span>
-<span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span><span class="p">,</span> <span class="n">FewShotChatMessagePromptTemplate</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_core.prompts</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span><span class="p">,</span> <span class="n">FewShotChatMessagePromptTemplate</span>
 
 <span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -10051,7 +10058,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_core.runnables</span> <span class="kn">import</span> <span class="n">RunnableLambda</span>
@@ -10119,7 +10126,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">step_back_rag</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">"What is the company's goal in reducing gas flaring?"</span><span class="p">)</span>
@@ -10133,7 +10140,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>{'context': [Document(page_content='with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil s Bart Cahir senior vice president of unconventional  Throughout the value chain our people are working hard to help reduce the greenhouse gas emissions associated with the products that enable modern life  According to management ExxonMobil is on', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
   Document(page_content='ConocoPhillips was the first US operator to unveil an emissions strategy aligned with the United Nations climate accord adding  we ve got a game plan and a pathway to get there and we think that s important for our industry and we need everybody to be doing that  The company in 2020 announced its intention to reduce operational GHG emissions intensity by 35 to 45 by 2030 a revision from the previous goal of 5 to 15 and to reach net zero emissions by 2050 The path to net zero will involve tools such as emissions offsets and carbon capture utilization and sequestration Lance said Within the ESG initiatives Lance and Sheffield also stressed the importance of curbing routine natural gas flaring which remains a stubborn challenge in the Permian despite progress made on reducing flaring intensity Other measures such as electrifying fracture fleets and better monitoring of methane leaks will be crucial as well they said Sheffield and Lance said they support the Biden administration s efforts', metadata={'date': '2021-03-05', 'domain': 'naturalgasintel', 'origin_doc_id': 17278332, 'title': 'ConocoPhillips, Pioneer Natural CEOs Preach Discipline as Permian Activity Rebounds', 'url': 'https://www.naturalgasintel.com/conocophillips-pioneer-natural-ceos-preach-discipline-as-permian-activity-rebounds/'}),
@@ -10143,13 +10150,13 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
   Document(page_content='propulsion technology have driven down emissions with more efficient ship engines reducing fuel consumption needs LNG carriers built today can carry more cargo while using less fuel making them more efficient  Cargo space is up 30 and fuel consumption is down close to 50  Kalleklev said  So you typically have a CO2 footprint which is 5560 less on the modern ship  Other innovations have helped drive emissions on carriers down For example reliquefaction systems which reliquefy boiloff gas and return it to the cargo tank are virtually standard issue on new LNG carriers Tutturen said Boiloff is LNG that evaporates during transport  Today to order a gas carrier without a reliquefaction system is unheard of  Tutturen said Seven of Flex s 13 carriers have partial or full reliquefaction units Kalleklev said The ships with full reliquefaction capabilities can bring the boiloff rate to 0035 while partial reliquefaction units can bring it to 0075 The six ships that don t have reliquefaction', metadata={'date': '2021-06-04', 'domain': 'naturalgasintel', 'origin_doc_id': 75770648, 'title': 'Vessel Owners Scoping Out Technology to Cut CO2 Emissions as Decarbonization Rules Loom', 'url': 'https://www.naturalgasintel.com/vessel-owners-scoping-out-technology-to-cut-co2-emissions-as-decarbonization-rules-loom-lng-spotlight/'}),
   Document(page_content='have driven down emissions with more efficient ship engines reducing fuel consumption needs LNG carriers built today can carry more cargo while using less fuel making them more efficient  Cargo space is up 30 and fuel consumption is down close to 50  Kalleklev said  So you typically have a CO2 footprint which is 5560 less on the modern ship  Other innovations have helped drive emissions on carriers down For example reliquefaction systems which reliquefy boiloff gas and return it to the cargo tank are virtually standard issue on new LNG carriers Tutturen said Boiloff is LNG that evaporates during transport  Today to order a gas carrier without a reliquefaction system is unheard of  Tutturen said Seven of Flex s 13 carriers have partial or full reliquefaction units Kalleklev said The ships with full reliquefaction capabilities can bring the boiloff rate to 0035 while partial reliquefaction units can bring it to 0075 The six ships that don t have reliquefaction capabilities have newer', metadata={'date': '2021-06-10', 'domain': 'naturalgasintel', 'origin_doc_id': 28758874, 'title': 'New Decarbonization Rules Could Speed ‘ Attrition’ of Older LNG Carriers, Flex LNG CEO Says', 'url': 'https://www.naturalgasintel.com/new-decarbonization-rules-could-speed-attrition-of-older-lng-carriers-flex-lng-ceo-says/'})],
  'question': "What is the company's goal in reducing gas flaring?",
- 'answer': "The companies mentioned in the given context, including ExxonMobil, ConocoPhillips, and Qatar Petroleum, have set goals to reduce gas flaring as part of their sustainability and emissions reduction strategies. ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75% compared to 2019 by the end of this year and eliminate all routine flaring in the basin by the end of 2022. ConocoPhillips aims to reduce operational greenhouse gas emissions intensity by 35% to 45% by 2030 and reach net zero emissions by 2050, which involves curbing routine natural gas flaring and better monitoring of methane leaks. Qatar Petroleum intends to achieve an end to routine flaring by 2030 and limit fugitive methane emissions by setting a methane intensity target of 0.2 across all facilities by 2025, while also deploying carbon capture and storage facilities to trap 7 million tons of carbon dioxide each year. Overall, these companies' goals in reducing gas flaring are to minimize emissions and increase sustainability in their operations."}</pre>
+ 'answer': 'The companies mentioned in the provided context, such as ExxonMobil, ConocoPhillips, and Qatar Petroleum, have set goals to reduce gas flaring as part of their broader efforts to reduce greenhouse gas emissions and promote sustainability. ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75% by the end of this year and eliminate all routine flaring in the basin by the end of 2022. ConocoPhillips aims to reduce flaring intensity across its upstream facilities by more than 75%, with an overall goal to eliminate routine flaring by 2030. Qatar Petroleum is targeting an end to routine flaring by 2030 and is committed to reducing flaring intensity in the upstream by more than 75%. These companies recognize that flaring contributes to greenhouse gas emissions and are implementing measures to reduce their environmental impact.'}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cde92361">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e99110da4c1b472">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10164,7 +10171,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy to boost investment an
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">step_back_evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Experiment 3: Step Back"</span><span class="p">,</span>
@@ -10221,7 +10228,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">experiment_3_combination</span> <span class="o">=</span> <span class="n">combine_evaluator_results</span><span class="p">([</span><span class="n">base_evaluator</span><span class="p">,</span> <span class="n">base_200_evaluator</span><span class="p">,</span> <span class="n">mqr_evaluator</span><span class="p">,</span> <span class="n">step_back_evaluator</span><span class="p">])</span>
@@ -10266,7 +10273,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">step_back_evaluator</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
@@ -10280,7 +10287,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10352,7 +10359,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ask_handpicked_questions</span><span class="p">(</span><span class="n">step_back_rag</span><span class="p">)</span>
@@ -10369,15 +10376,15 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Question: Why does melting ice contribute to global warming?
-Answer: Melting ice contributes to global warming because it reduces the amount of reflective white ice on the Earth's surface and exposes more dark-colored water or land. This leads to the absorption of more solar energy, which in turn contributes to higher temperatures. For example, when summer sea ice in the Lincoln Sea starts to melt, the dark sea absorbs over ten times as much solar energy as the reflective white ice, contributing to global warming. Melting ice also has an impact on ecosystems that rely on the ice, such as those that live on and around it, and can cause the release of methane from frozen soils and sediments. Furthermore, melting ice can lead to rising sea levels, which can have devastating consequences for coastal communities and economies. The effects of melting ice are already being felt in some areas, including droughts, wildfires, and floods, and it is important to reduce greenhouse gas emissions to slow down this process.
+Answer: Melting ice contributes to global warming in several ways. Firstly, when ice melts, it reduces the surface area that reflects sunlight, leading to a decrease in albedo. This means that less of the sun's energy is reflected back into space, and more is absorbed by the Earth's surface, leading to an increase in temperature. Secondly, when ice melts, it releases large amounts of stored carbon into the atmosphere, which can contribute to the greenhouse effect and further warming. Additionally, when ice melts, it can cause sea levels to rise, which can lead to increased flooding, erosion, and other negative impacts on ecosystems and human populations. Overall, the melting of ice is a significant contributor to the process of global warming, and addressing this issue is crucial for mitigating the impacts of climate change.
 
 
 Question: In 2021, what were the top 3 states in the US in terms of total solar power generating capacity?
-Answer: According to the available context, the top 3 states in the US in terms of total solar power generating capacity in 2021 were California, Texas, and Florida. These three states have been dominating the solar market in the country for the past few years, and they have consistently been the top three states for new solar capacity additions for the third consecutive year. However, some states have seen their capacity of new installations change considerably. For example, in 2021, Colorado installed the 12th most capacity in the US before falling to 26th in 2022 and rebounding to fourth in the country in the first half of this year. Conversely, Indiana has fallen down the rankings of the 50 states plus the territory of Puerto Rico and the city of Washington DC. In 2021, the state installed the seventh most solar capacity, which fell to 18th most in 2022 and 40th most in the first half of this year.
+Answer: According to the document with the page_content 'three US states California Florida and Texas that dominated the solar market in the country', California, Texas, and Florida were the top three states for new solar capacity additions in 2021. However, it is important to note that this document does not provide information on the total solar power generating capacity of these states. Additionally, other documents in the context mention changes in the ranking of states in terms of solar capacity installations, with some states experiencing significant growth while others have fallen down the rankings. For example, in 2021, Colorado installed the 12th most capacity in the US before falling to 26th in 2022 and rebounding to fourth in the country in the first half of 2023. Meanwhile, Indiana installed the seventh most solar capacity in 2021 before falling to 18th most in 2022 and 40th most in the first half of 2023. Overall, it appears that there is dynamic growth and change in the solar sector across different states in the US.
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. It was introduced by European Commission President Ursula Von der Leyen at the World Economic Forum in Davos in January 2023, coinciding with a deadline set by the Council in December 2022 for an industrial policy for Europe that would address any gaps in innovation and growth between the bloc and its competitors. The Green Deal Industrial Plan is part of the EU's larger European Green Deal, which seeks to make the bloc a net-zero economy by 2050 and accelerate the transition to a sustainable and climate-neutral future. The plan includes measures to upgrade the bloc's regulatory framework for quick deployment, ensure simplified and fast-track green project permitting, promote European strategic projects, and develop standards to support the scale-up of technologies across the EU. The EU also aims to speed up investment and financing for clean tech production in Europe, including the development of a sovereign wealth fund and the mobilization of European funds. However, some industry groups have criticized the plan's lack of focus on solar and the absence of support for low-income countries facing challenges arising from the green transition.
+Answer: The EU's Green Deal Industrial Plan is a comprehensive strategy aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. The plan was introduced by European Commission President Ursula Von der Leyen in January 2023 and is similar to plans proposed by other major economies of the world. The plan seeks to make the EU's net-zero industry more competitive and accelerate its transition to net-zero. It is part of the European Green Deal, which is the bloc's response to climate change by modernizing its economy and making it more resource-efficient. The plan is focused on four pillars: the regulatory environment, access to finance, enhancing skills, and improving supply chain resilience. It calls for measures to ensure that the European workforce has the right skills needed for the energy transition and to facilitate open and fair trade in the clean tech space. The plan also aims to complement an earlier EU initiative to safeguard supplies of critical raw materials and rare earth metals needed for the energy transition. However, there is little mention of helping low-income countries with the challenges arising from the transition. The plan includes proposals to make state aid more flexible, mobilize European funds, create a sovereign wealth fund, and improve tax exemptions, flexible aid, and the promotion of local manufacturing. The plan has yet to be discussed among member states and will be presented at the European summit in March.
 
 
 </pre>
@@ -10409,7 +10416,7 @@ Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boos
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f707c70e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9e17e6fea51c139">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10428,7 +10435,7 @@ Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boos
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_core.runnables</span> <span class="kn">import</span> <span class="n">RunnablePassthrough</span>
@@ -10460,7 +10467,7 @@ Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boos
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hyde_retrieval_chain</span> <span class="o">=</span> <span class="p">(</span><span class="n">gen_hypothetical_doc</span>
@@ -10485,20 +10492,20 @@ Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boos
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>{'question': "What is the company's goal in reducing gas flaring?",
  'context': [Document(page_content='emissions as does incomplete combustion during the flaring process while flaring converts methane to CO2 More broadly climate change  practically an afterthought during the 2016 presidential campaign  has taken on a more prominent role in political discourse as seen during the debates between Biden and President Trump And while natural gas is the cleanest fossil fuel it increasingly has been under the microscope as its share of the energy mix grows  The world has changed a lot in four years  Erin Blanton senior research scholar at Columbia University s Center on Global Energy Policy told NGI  I think the industry is starting to really wake up to the fact that they have to deal with this black eye which is methaneif they want to survive  The good news she said is that there are numerous policy options to reduce emissions in ways that are technically and economically feasible for the industry One example she cited is the EPA s 2016 Oil and Natural Gas New Source Performance Standards', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
   Document(page_content='with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil s Bart Cahir senior vice president of unconventional  Throughout the value chain our people are working hard to help reduce the greenhouse gas emissions associated with the products that enable modern life  According to management ExxonMobil is on', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
-  Document(page_content='help our customers deal with one of the most pressing issues of climate change the urgent need to cut methane emissions Due to its potency as a GHG and its major share of the industry s overall operational emissions tackling methane emissions will make a significant impact  As energy companies seek to operate in a more sustainable manner they will need to more reliably report and reduce their methane emissions and flaring activity Currently when looking for answers and partners to address this challenge they are faced with a patchwork of disparate offeringsSEES changes that SEES delivers a holistic approach to enable operators to develop a successful methane emissions elimination strategy from the outset The approach builds on three pillarsplan measure and actthat are all underpinned by the industry s first methane emissions digital platform accessible in the DELFI  cognitive E  P environment to provide a comprehensive and differentiated path for operators to achieve their', metadata={'date': '2022-03-09', 'domain': 'azocleantech', 'origin_doc_id': 97583316, 'title': 'Schlumberger Launches Dedicated Business to Eliminate Oil and Gas Industry’ s Methane and Routine Flare Emissions', 'url': 'https://www.azocleantech.com/news.aspx?newsID=31294'}),
-  Document(page_content='about 84 times more potent as a greenhouse gas during the first two decades after its release than CO2 according to the Environmental Defense Fund  EDF The gas industry including national oil companies supermajors independents midstreamers and utilities has stepped up voluntary efforts to plug methane leaks and reduce routine gas flaring and venting amid growing calls from investors to take meaningful action on climate However as techniques for measuring greenhouse gas  GHG pollution have improved the challenge appears increasingly daunting A recent EDF study for example found that annual oil and gas methane emissions in New Mexico stand at an estimated 11 million metric tons about five times higher than what current Environmental Protection Agency  EPA data suggest Venting and flaring meanwhile reached record high levels in the United States during 2019 So far only Alaska and Colorado have banned routine flaring and venting in the upstream segment Venting contributes to methane', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'})],
- 'answer': "The company's goal is to reduce flaring volumes across its Permian operations by more than 75% versus 2019 and to eliminate all routine flaring in the basin by the end of 2022, as part of their efforts to operate in a more sustainable manner and reduce greenhouse gas emissions."}</pre>
+  Document(page_content='about 84 times more potent as a greenhouse gas during the first two decades after its release than CO2 according to the Environmental Defense Fund  EDF The gas industry including national oil companies supermajors independents midstreamers and utilities has stepped up voluntary efforts to plug methane leaks and reduce routine gas flaring and venting amid growing calls from investors to take meaningful action on climate However as techniques for measuring greenhouse gas  GHG pollution have improved the challenge appears increasingly daunting A recent EDF study for example found that annual oil and gas methane emissions in New Mexico stand at an estimated 11 million metric tons about five times higher than what current Environmental Protection Agency  EPA data suggest Venting and flaring meanwhile reached record high levels in the United States during 2019 So far only Alaska and Colorado have banned routine flaring and venting in the upstream segment Venting contributes to methane', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
+  Document(page_content='s Mexico Gas Price Index Read the analysis of our fifth survey of active players in Mexico showcasing marketdriven insights now   The company plans to electrify its operations with lowcarbon power which may include wind solar hydrogen natural gas with carbon capture and storage or other emerging technologies  the firm said  ExxonMobil plans to expand its methane detection programs utilizing satellite surveillance and a network of groundbased sensors for continuous monitoring and aerial flyovers that identify leaks for rapid repairs  By the end of this year ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022  The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring  management said The net zero goal for Scope 1 and 2 emissions  is one of the most ambitious and widereaching in the Permian Basin  said ExxonMobil', metadata={'date': '2021-12-13', 'domain': 'naturalgasintel', 'origin_doc_id': 56461266, 'title': 'ExxonMobil Envisions Carbon-Neutral Permian Operations by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-envisions-carbon-neutral-permian-operations-by-2030/'})],
+ 'answer': "The company's goal is to reduce flaring volumes across its Permian operations by more than 75% versus 2019 and to eliminate all routine flaring in the basin by the end of 2022, as well as securing alternative natural gas delivery points across the basin to minimize nonroutine flaring. The net zero goal for Scope 1 and 2 emissions is one of the most ambitious and widereaching in the Permian Basin."}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd8c0777">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ce8c537f821b05">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10513,7 +10520,7 @@ Answer: The EU's Green Deal Industrial Plan is a policy initiative aimed at boos
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hyde_evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Experiment 4: HyDE"</span><span class="p">,</span>
@@ -10570,7 +10577,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">experiment_4_combination</span> <span class="o">=</span> <span class="n">combine_evaluator_results</span><span class="p">([</span><span class="n">base_evaluator</span><span class="p">,</span> <span class="n">base_200_evaluator</span><span class="p">,</span> <span class="n">mqr_evaluator</span><span class="p">,</span> <span class="n">step_back_evaluator</span><span class="p">,</span> <span class="n">hyde_evaluator</span><span class="p">])</span>
@@ -10616,7 +10623,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hyde_evaluator</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
@@ -10630,7 +10637,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10702,7 +10709,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ask_handpicked_questions</span><span class="p">(</span><span class="n">hyde_rag</span><span class="p">)</span>
@@ -10719,15 +10726,15 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Question: Why does melting ice contribute to global warming?
-Answer: Melting ice contributes to global warming because when white ice reflects the sun's rays, a dark sea absorbs over ten times as much solar energy, which contributes to global warming. Additionally, as the surface layer of the oceans becomes more saturated with CO2 due to extreme climate change, its alkalinity falls, and with it, its ability to absorb CO2. This results in a surface layer that acts like a barrier for CO2 absorption, which means less of the greenhouse gas goes into the ocean and more of it is left behind in the atmosphere, producing faster warming.
+Answer: Melting ice contributes to global warming because as the surface layer of the oceans becomes more saturated with CO2, its alkalinity falls and with it its ability to absorb CO2. This results in a surface layer that acts like a barrier for CO2 absorption, which means less of the greenhouse gas goes into the ocean and more of it is left behind in the atmosphere. This in turn produces faster warming which sustains and strengthens the low-alkalinity surface layer. Additionally, ice sheet melting affects ocean processes which can feed back onto the ice sheet and the atmosphere, further contributing to global warming.
 
 
 Question: In 2021, what were the top 3 states in the US in terms of total solar power generating capacity?
-Answer: California, Texas, and Florida were the top three states in the US in terms of total solar power generating capacity in 2021.
+Answer: The top 3 states in the US in terms of total solar power generating capacity in 2021 were Texas with 61 GW, California with 36 GW, and Florida with 17 GW.
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition, including the expansion of renewable energy and green technologies. It includes proposals to upgrade the bloc's regulatory framework for quick deployment, ensure simplified and fast-track green project permitting, promote European strategic projects, and develop standards to support the scale-up of technologies across the EU. The plan also seeks to speed up investment and financing for clean tech production in Europe and secure access to raw materials or rare earths that are key for some renewable technologies.
+Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition, including the expansion of renewable energy and green technologies. It includes measures to upgrade the bloc's regulatory framework for quick deployment, secure access to raw materials, speed up investment and financing for clean tech production, and support public and private investments in net zero technologies and industrial innovation. The plan is part of the EU's bid to make its net zero industry more competitive and accelerate its transition to net zero.
 
 
 </pre>
@@ -10758,7 +10765,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting inve
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b842782">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=639827f3dd50c4d8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10774,7 +10781,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting inve
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.retrievers</span> <span class="kn">import</span> <span class="n">ContextualCompressionRetriever</span>
@@ -10824,20 +10831,20 @@ Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting inve
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[55]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'context': [Document(page_content='ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75 versus 2019 and to eliminate all routine flaring in the basin by the end of 2022. The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring.', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
-  Document(page_content='The industry is starting to really wake up to the fact that they have to deal with this black eye which is methane if they want to survive. There are numerous policy options to reduce emissions in ways that are technically and economically feasible for the industry.', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
+<pre>{'context': [Document(page_content='ExxonMobil plans to reduce flaring volumes across its Permian operations by more than 75% versus 2019 and to eliminate all routine flaring in the basin by the end of 2022. The company is also securing alternative natural gas delivery points across the basin to minimize nonroutine flaring.', metadata={'date': '2021-12-06', 'domain': 'naturalgasintel', 'origin_doc_id': 54202684, 'title': 'ExxonMobil Targeting Net Zero Emissions in the Permian by 2030', 'url': 'https://www.naturalgasintel.com/exxonmobil-targeting-net-zero-emissions-in-the-permian-by-2030/'}),
+  Document(page_content='The industry is starting to really wake up to the fact that they have to deal with this black eye which is methane if they want to survive. The good news she said is that there are numerous policy options to reduce emissions in ways that are technically and economically feasible for the industry.', metadata={'date': '2021-01-08', 'domain': 'naturalgasintel', 'origin_doc_id': 60813863, 'title': 'Natural Gas ‘ Bridge Fuel’ Narrative to Face Tougher Scrutiny Under Biden', 'url': 'https://www.naturalgasintel.com/natural-gas-bridge-fuel-narrative-to-face-tougher-scrutiny-under-biden/'}),
   Document(page_content='The company stressed the importance of curbing routine natural gas flaring.', metadata={'date': '2021-03-05', 'domain': 'naturalgasintel', 'origin_doc_id': 17278332, 'title': 'ConocoPhillips, Pioneer Natural CEOs Preach Discipline as Permian Activity Rebounds', 'url': 'https://www.naturalgasintel.com/conocophillips-pioneer-natural-ceos-preach-discipline-as-permian-activity-rebounds/'}),
-  Document(page_content='The company aims to reduce flaring intensity in the upstream by more than 75. QP is targeting an end to routine flaring by 2030. The company has spent 900 million between 2012 and 2018 on reducing flaring.', metadata={'date': '2021-01-13', 'domain': 'energyvoice', 'origin_doc_id': 32991764, 'title': 'QP launches carbon cut strategy - News for the Energy Sector', 'url': 'https://www.energyvoice.com//www.energyvoice.com/oilandgas/middle-east/lng-middle-east/291211/qp-emissions-lng-sustainability/'})],
+  Document(page_content='The company aims to reduce flaring intensity in the upstream by more than 75%. QP is targeting an end to routine flaring by 2030. The company has spent 900 million between 2012 and 2018 on reducing flaring.', metadata={'date': '2021-01-13', 'domain': 'energyvoice', 'origin_doc_id': 32991764, 'title': 'QP launches carbon cut strategy - News for the Energy Sector', 'url': 'https://www.energyvoice.com//www.energyvoice.com/oilandgas/middle-east/lng-middle-east/291211/qp-emissions-lng-sustainability/'})],
  'question': 'Is the company aiming to reduce gas flaring?',
- 'answer': 'Yes, the company is aiming to reduce gas flaring, both routine and nonroutine, across its Permian operations by more than 75% compared to 2019 levels. They also plan to eliminate all routine flaring in the basin by the end of 2022. The company has also invested significant funds in reducing flaring in the past.'}</pre>
+ 'answer': 'Yes, the company is aiming to reduce gas flaring.'}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=99d98b00">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d988b9833aef4299">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10852,7 +10859,7 @@ Answer: The EU's Green Deal Industrial Plan is a strategy aimed at boosting inve
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">base_compression_evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Experiment 5: Contextual Compression"</span><span class="p">,</span>
@@ -10909,7 +10916,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">experiment_5_combination</span> <span class="o">=</span> <span class="n">combine_evaluator_results</span><span class="p">([</span><span class="n">base_evaluator</span><span class="p">,</span> <span class="n">base_200_evaluator</span><span class="p">,</span> <span class="n">mqr_evaluator</span><span class="p">,</span> <span class="n">step_back_evaluator</span><span class="p">,</span> <span class="n">hyde_evaluator</span><span class="p">,</span> <span class="n">base_compression_evaluator</span><span class="p">])</span>
@@ -10953,7 +10960,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">base_compression_evaluator</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
@@ -10967,7 +10974,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[58]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[57]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -11039,7 +11046,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ask_handpicked_questions</span><span class="p">(</span><span class="n">base_rag_compression</span><span class="p">)</span>
@@ -11086,15 +11093,15 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Question: Why does melting ice contribute to global warming?
-Answer: Melting ice contributes to global warming because ice reflects sunlight and heat back into space, but when it melts, the dark surface underneath (such as water or land) absorbs more heat from the sun, leading to further warming of the Earth's surface. Additionally, melting ice releases trapped greenhouse gases, such as methane, which can further exacerbate the warming effect.
+Answer: Melting ice contributes to global warming because as ice melts, it exposes more of the Earth's surface which absorbs more heat from the sun, causing the Earth's temperature to rise. Additionally, melting ice releases methane and carbon dioxide, which are greenhouse gases that trap heat in the atmosphere, leading to further warming.
 
 
 Question: In 2021, what were the top 3 states in the US in terms of total solar power generating capacity?
-Answer: The context does not provide information on the total solar power generating capacity for 2021 in the top three states. It only mentions the new solar capacity additions and the top three states for those additions.
+Answer: The context does not provide information on the total solar power generating capacity in 2021 for all states in the US. However, it does mention that California, Texas, and Florida were the top three states for new solar capacity additions for the third consecutive year, with California taking back the top spot after Texas led the nation in 2021. Additionally, the context provides specific solar power generating capacity numbers for California (106 GW), New Jersey (19 GW), and Massachusetts (18 GW).
 
 
 Question: What is the EU’s Green Deal Industrial Plan?
-Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boosting investment and economic resilience in the bloc to tackle the challenges of the green transition. It includes measures to make the EU's net zero industry more competitive and accelerate its transition to net zero, such as upgrading the bloc's regulatory framework for quick deployment of green projects, easing state aid rules to enable higher subsidies, and creating an environment conducive to increasing the EU's manufacturing capacity of net-zero technologies. The plan also includes supporting public and private investments in renewable energy and green technologies, ensuring simplified and fast-track green project permitting, promoting European strategic projects, and developing standards to support the scale-up of technologies across the EU. Additionally, the plan includes a Critical Raw Materials Act to secure access to raw materials or rare earths that are key for some renewable technologies such as wind turbines or electric vehicles.
+Answer: The EU's Green Deal Industrial Plan is a plan presented by the European Commission to boost investment and economic resilience in the bloc to tackle the challenges of the green transition. It aims to make the EU's net zero industry more competitive and accelerate its transition to net zero. The plan includes measures such as easing state aid rules to enable higher subsidies, upgrading the bloc's regulatory framework for quick deployment of green projects, promoting European strategic projects, developing standards to support the scale-up of technologies across the EU, and a Critical Raw Materials Act to secure access to raw materials or rare earths that are key for some renewable technologies. The plan also supports public and private investments in net zero technologies and industrial innovation, including battery technology, critical raw materials recycling, hydrogen, biofuels, and low-carbon steel.
 
 
 </pre>
@@ -11125,7 +11132,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=53736766">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4248a159ed2c24f4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11141,7 +11148,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">evaluators</span> <span class="o">=</span> <span class="p">[</span><span class="n">base_evaluator</span><span class="p">,</span>
@@ -11158,7 +11165,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a4849b3b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b70b7171c57d7a46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11173,7 +11180,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_evaluation_comparative_results</span><span class="p">(</span><span class="n">combined_results</span><span class="p">,</span> <span class="n">use_median</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">err_bars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -11227,7 +11234,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_evaluation_comparative_results</span><span class="p">(</span><span class="n">combined_results</span><span class="p">,</span> <span class="n">use_median</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">err_bars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -11272,7 +11279,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [63]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_metric_boxplots</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -11337,7 +11344,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1e1b961">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b4991460cea746b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11353,7 +11360,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [64]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [63]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_aggregated_correctness_vs_precision</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -11414,7 +11421,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f8080e1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5690de72ab81c9d4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11429,7 +11436,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [65]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_aggregated_correctness_vs_rr</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -11489,7 +11496,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d64900c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8596358feacf0a38">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11504,7 +11511,7 @@ Answer: The EU's Green Deal Industrial Plan is a set of proposals aimed at boost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [66]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [65]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_confidence_vs_correctness</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
