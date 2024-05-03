@@ -12,6 +12,7 @@ from matplotlib import pyplot as plt
 from ragas import evaluate, RunConfig
 from ragas.metrics import (answer_correctness, context_precision, answer_relevancy, answer_similarity,
                            context_entity_recall)
+import re
 from tqdm.auto import tqdm
 
 nest_asyncio.apply()
@@ -154,8 +155,11 @@ class Evaluator:
         Returns:
             Path: File path for the cached result.
         """
+
         df_hash = pd.util.hash_pandas_object(df).sum()
-        file_name = f"{self.name}_{df_hash}.pkl"
+        name = re.sub(r'Experiment \d+: ', '', self.name)
+
+        file_name = f"{name}_{df_hash}.pkl"
         return self.cache_dir / file_name
 
     def evaluate(self,
@@ -303,7 +307,7 @@ class Evaluator:
         exclude_boxplot = ['hit@2', 'rr']
         ragas_metrics_data_boxplot = ragas_metrics_data.drop(exclude_boxplot, axis=1)
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(14, 8))
         sns.boxplot(data=ragas_metrics_data_boxplot, palette="Set2")
         plt.title(f'{self.name}: Boxplots of RAGAS Evaluation Metrics')
         plt.ylabel('Scores')
@@ -315,7 +319,7 @@ class Evaluator:
         means = ragas_metrics_data.mean()
         # stds = ragas_metrics_data.std() # TODO: Add standard deviations to the plot
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(14, 8))
         sns.barplot(x=means.index, y=means, palette="Set2")
         plt.title(f'{self.name}: Mean Scores of RAGAS Evaluation Metrics')
         plt.ylabel('Mean Scores')
