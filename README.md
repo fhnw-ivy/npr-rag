@@ -29,7 +29,7 @@ every component.
 
 The following list shows the relevant notebooks of this project. Every Jupyter Notebook also was exported into
 an `.html` file so the outputs can be viewed without running a Jupyter Server. These exports can be found in
-the [`/exports`](/exports/) folder.
+the [`notebooks/exports`](notebooks/exports/) folder.
 
 - **Main Notebook**: The main notebook ([`main.ipynb`](main.ipynb) in the Project's root) was used to explore different
   ways to build a RAG pipeline. It's the main artifact of this project and holds the team's observations and conclusions
