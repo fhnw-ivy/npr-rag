@@ -317,8 +317,6 @@ class Evaluator:
         plt.show()
 
         means = ragas_metrics_data.mean()
-        # stds = ragas_metrics_data.std() # TODO: Add standard deviations to the plot
-
         plt.figure(figsize=(14, 8))
         sns.barplot(x=means.index, y=means, palette="Set2")
         plt.title(f'{self.name}: Mean Scores of RAGAS Evaluation Metrics')
